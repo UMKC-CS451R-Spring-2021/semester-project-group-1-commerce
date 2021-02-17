@@ -2,4 +2,8 @@
 
 ## Members
 Ozzie Loewen
+
+Thomas Starr-Timberlake
+
 Kole Keeney
+
