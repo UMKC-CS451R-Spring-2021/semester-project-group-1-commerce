@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "VHQBh3ef0VkRzgPJJTYRvSfXcHi12LxJ8Qyk+R8zUZtuh6u1yu4hgVADnzPaCctx7Qx1fjWBSemRxdZTRzjqWA==",
+  "success": true,
+  "projectFilePath": "/home/armquist/github/CS451Group1/semester-project-group-1-commerce/notifier/notifier.csproj",
+  "expectedPackageFiles": [
+    "/home/armquist/.nuget/packages/microsoft.aspnetcore.app.ref/5.0.0/microsoft.aspnetcore.app.ref.5.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
