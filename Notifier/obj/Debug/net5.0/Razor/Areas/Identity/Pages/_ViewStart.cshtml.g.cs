@@ -12,7 +12,29 @@ namespace AspNetCore
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.Rendering;
     using Microsoft.AspNetCore.Mvc.ViewFeatures;
+#nullable restore
+#line 1 "/home/armquist/github/CS451Group1/semester-project-group-1-commerce/Notifier/Areas/Identity/Pages/_ViewImports.cshtml"
+using Microsoft.AspNetCore.Identity;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 2 "/home/armquist/github/CS451Group1/semester-project-group-1-commerce/Notifier/Areas/Identity/Pages/_ViewImports.cshtml"
+using Notifier.Areas.Identity;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 3 "/home/armquist/github/CS451Group1/semester-project-group-1-commerce/Notifier/Areas/Identity/Pages/_ViewImports.cshtml"
+using Notifier.Areas.Identity.Pages;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"58086f9666d4b037bb0e887459c3c1ccb2a38253", @"/Areas/Identity/Pages/_ViewStart.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"6b195b9dd06de9dd9077858255b22029759858e6", @"/Areas/Identity/Pages/_ViewImports.cshtml")]
     public class Areas_Identity_Pages__ViewStart : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         #pragma warning disable 1998
