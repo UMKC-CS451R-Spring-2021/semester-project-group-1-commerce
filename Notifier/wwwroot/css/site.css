@@ -12,6 +12,11 @@ a {
   color: #0366d6;
 }
 
+.login {
+    background-image: url("./Images/login_bg.png");
+    background-size: 100%;
+}
+
 .btn-primary {
   color: #fff;
   background-color: #1b6ec2;
