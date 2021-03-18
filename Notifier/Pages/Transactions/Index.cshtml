@@ -1,0 +1,72 @@
+@page
+@model Notifier.PagesTransactions.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Transaction[0].TransactionDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Transaction[0].TransactionTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Transaction[0].Location)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Transaction[0].Balance)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Transaction[0].DepositWithdrawl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Transaction[0].TransAmount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Transaction[0].Description)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Transaction) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TransactionDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TransactionTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Location)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Balance)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DepositWithdrawl)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TransAmount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.TransactionId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.TransactionId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.TransactionId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

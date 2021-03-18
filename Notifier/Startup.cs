@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 using Notifier.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -33,7 +34,11 @@ namespace Notifier
             services.AddDatabaseDeveloperPageExceptionFilter();
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
-            services.AddRazorPages();
+           services.AddRazorPages(options =>
+{
+    options.Conventions.AuthorizeFolder("/transactions");
+    options.Conventions.AllowAnonymousToPage("/Index");
+});
 			services.Configure<IdentityOptions>(options =>
 			{
 				// Default Password settings.
@@ -44,6 +49,9 @@ namespace Notifier
 				options.Password.RequiredLength = 8;
 				options.Password.RequiredUniqueChars = 1;
 			});
+
+            services.AddDbContext<NotifierTransactionContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("NotifierTransactionContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
