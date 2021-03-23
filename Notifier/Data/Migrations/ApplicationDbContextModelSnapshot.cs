@@ -219,7 +219,7 @@ namespace Notifier.Data.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<decimal>("Balance")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("decimal(18, 2)");
 
                     b.Property<string>("DepositWithdrawl")
                         .HasColumnType("TEXT");
@@ -234,7 +234,7 @@ namespace Notifier.Data.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<decimal>("TransAmount")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("decimal(18, 2)");
 
                     b.Property<DateTime>("TransactionDate")
                         .HasColumnType("TEXT");
