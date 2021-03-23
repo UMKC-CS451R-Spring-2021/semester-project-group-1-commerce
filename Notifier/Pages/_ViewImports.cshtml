@@ -3,3 +3,7 @@
 @using Notifier.Data
 @namespace Notifier.Pages
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using Notifier.Authorization;
+@using Microsoft.AspNetCore.Authorization
+@using Notifier.Models
+@inject IAuthorizationService AuthorizationService

@@ -33,8 +33,29 @@ using Notifier.Data;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 6 "/home/armquist/github/CS451Group1/semester-project-group-1-commerce/Notifier/Pages/_ViewImports.cshtml"
+using Notifier.Authorization;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 7 "/home/armquist/github/CS451Group1/semester-project-group-1-commerce/Notifier/Pages/_ViewImports.cshtml"
+using Microsoft.AspNetCore.Authorization;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 8 "/home/armquist/github/CS451Group1/semester-project-group-1-commerce/Notifier/Pages/_ViewImports.cshtml"
+using Notifier.Models;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"b35da5571ca1008ec115d9f150e711d48ccb2728", @"/Pages/Index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"e5deeb95bfe1fb55d51f7d3fd3e1e3ecc521aaac", @"/Pages/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"7cd05cec5d49c37eee50e3cb71ce7bca229f056f", @"/Pages/_ViewImports.cshtml")]
     public class Pages_Index : global::Microsoft.AspNetCore.Mvc.RazorPages.Page
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("class", new global::Microsoft.AspNetCore.Html.HtmlString("nav-link text-blue"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -72,7 +93,7 @@ using Notifier.Data;
 #line hidden
 #nullable disable
             WriteLiteral("\r\n<div class=\"login\">\r\n    <div class=\"text-center\">\r\n        <h1 class=\"display-4\">Commerce Banking App</h1>\r\n        <p>");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b35da5571ca1008ec115d9f150e711d48ccb27284563", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b35da5571ca1008ec115d9f150e711d48ccb27285189", async() => {
                 WriteLiteral("Click Me To Login Here");
             }
             );
@@ -93,6 +114,8 @@ using Notifier.Data;
             WriteLiteral("</p>\r\n    </div>\r\n</div>\r\n");
         }
         #pragma warning restore 1998
+        [global::Microsoft.AspNetCore.Mvc.Razor.Internal.RazorInjectAttribute]
+        public IAuthorizationService AuthorizationService { get; private set; }
         [global::Microsoft.AspNetCore.Mvc.Razor.Internal.RazorInjectAttribute]
         public global::Microsoft.AspNetCore.Mvc.ViewFeatures.IModelExpressionProvider ModelExpressionProvider { get; private set; }
         [global::Microsoft.AspNetCore.Mvc.Razor.Internal.RazorInjectAttribute]

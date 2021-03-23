@@ -1,28 +1,46 @@
-using System;
+using Notifier.Authorization;
+using Notifier.Data;
+using Notifier.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
-using Notifier.Models;
 
 namespace Notifier.PagesTransactions
 {
-    public class IndexModel : PageModel
+    #region snippet
+    public class IndexModel : DI_BasePageModel
     {
-        private readonly NotifierTransactionContext _context;
-
-        public IndexModel(NotifierTransactionContext context)
+        public IndexModel(
+            ApplicationDbContext context,
+            IAuthorizationService authorizationService,
+            UserManager<IdentityUser> userManager)
+            : base(context, authorizationService, userManager)
         {
-            _context = context;
         }
 
-        public IList<Transaction> Transaction { get;set; }
+        public IList<Transaction> Transaction { get; set; }
 
         public async Task OnGetAsync()
         {
-            Transaction = await _context.Transaction.ToListAsync();
+            var Transactions = from c in Context.Transaction
+                           select c;
+
+            // var isAuthorized = User.IsInRole(Constants.ContactAdministratorsRole);
+
+            var currentUserId = UserManager.GetUserId(User);
+
+            // Only approved contacts are shown UNLESS you're authorized to see them
+            // or you are the owner.
+            // if (!isAuthorized)
+            // {
+                Transactions = Transactions.Where(c => c.OwnerID == currentUserId);
+            // }
+
+            Transaction = await Transactions.ToListAsync();
         }
     }
+    #endregion
 }
