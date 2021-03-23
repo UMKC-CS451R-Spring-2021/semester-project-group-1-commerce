@@ -7,11 +7,11 @@ namespace Notifier.Models
     {
         public int TransactionId { get; set; }
 
+		// user ID from AspNetUser table.
+    	public string OwnerID { get; set; }
+		
         [DataType(DataType.Date)]
         public DateTime TransactionDate { get; set; }
-
-		 // user ID from AspNetUser table.
-    	public string OwnerID { get; set; }
 		
         [DataType(DataType.Time)]
         public DateTime TransactionTime { get; set; }

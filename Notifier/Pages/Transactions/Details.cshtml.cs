@@ -5,15 +5,16 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using Notifier.Data;
 using Notifier.Models;
 
 namespace Notifier.PagesTransactions
 {
     public class DetailsModel : PageModel
     {
-        private readonly NotifierTransactionContext _context;
+        private readonly Notifier.Data.ApplicationDbContext _context;
 
-        public DetailsModel(NotifierTransactionContext context)
+        public DetailsModel(Notifier.Data.ApplicationDbContext context)
         {
             _context = context;
         }

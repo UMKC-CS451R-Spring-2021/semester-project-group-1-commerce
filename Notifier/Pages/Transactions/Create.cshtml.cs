@@ -1,22 +1,25 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Notifier.Authorization;
+using Notifier.Data;
+using Notifier.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Notifier.Models;
+using System.Threading.Tasks;
 
 namespace Notifier.PagesTransactions
 {
-    public class CreateModel : PageModel
+    #region snippetCtor
+    public class CreateModel : DI_BasePageModel
     {
-        private readonly NotifierTransactionContext _context;
-
-        public CreateModel(NotifierTransactionContext context)
+        public CreateModel(
+            ApplicationDbContext context,
+            IAuthorizationService authorizationService,
+            UserManager<IdentityUser> userManager)
+            : base(context, authorizationService, userManager)
         {
-            _context = context;
         }
+        #endregion
 
         public IActionResult OnGet()
         {
@@ -26,7 +29,7 @@ namespace Notifier.PagesTransactions
         [BindProperty]
         public Transaction Transaction { get; set; }
 
-        // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
+        #region snippet_Create
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
@@ -34,10 +37,22 @@ namespace Notifier.PagesTransactions
                 return Page();
             }
 
-            _context.Transaction.Add(Transaction);
-            await _context.SaveChangesAsync();
+            Transaction.OwnerID = UserManager.GetUserId(User);
+
+            // requires using ContactManager.Authorization;
+            var isAuthorized = await AuthorizationService.AuthorizeAsync(
+                                                        User, Transaction,
+                                                        TransactionOperations.Create);
+            if (!isAuthorized.Succeeded)
+            {
+                return Forbid();
+            }
+
+            Context.Transaction.Add(Transaction);
+            await Context.SaveChangesAsync();
 
             return RedirectToPage("./Index");
         }
+        #endregion
     }
 }

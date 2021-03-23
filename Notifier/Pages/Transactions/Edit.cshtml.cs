@@ -1,76 +1,83 @@
-using System;
-using System.Collections.Generic;
+using Notifier.Authorization;
+using Notifier.Data;
+using Notifier.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using Notifier.Models;
 
 namespace Notifier.PagesTransactions
 {
-    public class EditModel : PageModel
+    #region snippet
+    public class EditModel : DI_BasePageModel
     {
-        private readonly NotifierTransactionContext _context;
-
-        public EditModel(NotifierTransactionContext context)
+        public EditModel(
+            ApplicationDbContext context,
+            IAuthorizationService authorizationService,
+            UserManager<IdentityUser> userManager)
+            : base(context, authorizationService, userManager)
         {
-            _context = context;
         }
 
         [BindProperty]
         public Transaction Transaction { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task<IActionResult> OnGetAsync(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            Transaction = await _context.Transaction.FirstOrDefaultAsync(m => m.TransactionId == id);
+            Transaction = await Context.Transaction.FirstOrDefaultAsync(
+                                                 m => m.TransactionId == id);
 
             if (Transaction == null)
             {
                 return NotFound();
             }
+
+            var isAuthorized = await AuthorizationService.AuthorizeAsync(
+                                                      User, Transaction,
+                                                      TransactionOperations.Update);
+            if (!isAuthorized.Succeeded)
+            {
+                return Forbid();
+            }
+
             return Page();
         }
 
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see https://aka.ms/RazorPagesCRUD.
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(int id)
         {
             if (!ModelState.IsValid)
             {
                 return Page();
             }
 
-            _context.Attach(Transaction).State = EntityState.Modified;
+            // Fetch Transaction from DB to get OwnerID.
+            var Transaction = await Context
+                .Transaction.AsNoTracking()
+                .FirstOrDefaultAsync(m => m.TransactionId == id);
 
-            try
+            if (Transaction == null)
             {
-                await _context.SaveChangesAsync();
+                return NotFound();
             }
-            catch (DbUpdateConcurrencyException)
+
+            var isAuthorized = await AuthorizationService.AuthorizeAsync(
+                                                     User, Transaction,
+                                                     TransactionOperations.Update);
+            if (!isAuthorized.Succeeded)
             {
-                if (!TransactionExists(Transaction.TransactionId))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return Forbid();
             }
+
+            Transaction.OwnerID = Transaction.OwnerID;
+
+            Context.Attach(Transaction).State = EntityState.Modified;
+
+            await Context.SaveChangesAsync();
 
             return RedirectToPage("./Index");
         }
-
-        private bool TransactionExists(int id)
-        {
-            return _context.Transaction.Any(e => e.TransactionId == id);
-        }
     }
+    #endregion
 }
