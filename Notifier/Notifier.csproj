@@ -5,7 +5,6 @@
     <UserSecretsId>aspnet-Notifier-BED05C80-C3FF-442E-9B06-3956DC516FB5</UserSecretsId>
   </PropertyGroup>
 
-  <PropertyGroup Condition=" '$(RunConfiguration)' == 'Custom' " />
   <ItemGroup>
     <None Remove="Areas\Identity\Pages\Account\Images\dog.jpeg" />
   </ItemGroup>
@@ -27,5 +26,6 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\css\Images\" />
+    <Folder Include="Images\" />
   </ItemGroup>
 </Project>

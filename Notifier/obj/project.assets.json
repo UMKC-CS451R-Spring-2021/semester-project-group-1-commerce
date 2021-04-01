@@ -7815,19 +7815,19 @@
     ]
   },
   "packageFolders": {
-    "/home/armquist/.nuget/packages/": {}
+    "/Users/kolekeeney/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/armquist/github/CS451Group1/semester-project-group-1-commerce/Notifier/Notifier.csproj",
+      "projectUniqueName": "/Users/kolekeeney/Desktop/Commerce/Notifier/Notifier.csproj",
       "projectName": "Notifier",
-      "projectPath": "/home/armquist/github/CS451Group1/semester-project-group-1-commerce/Notifier/Notifier.csproj",
-      "packagesPath": "/home/armquist/.nuget/packages/",
-      "outputPath": "/home/armquist/github/CS451Group1/semester-project-group-1-commerce/Notifier/obj/",
+      "projectPath": "/Users/kolekeeney/Desktop/Commerce/Notifier/Notifier.csproj",
+      "packagesPath": "/Users/kolekeeney/.nuget/packages/",
+      "outputPath": "/Users/kolekeeney/Desktop/Commerce/Notifier/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/armquist/.nuget/NuGet/NuGet.Config"
+        "/Users/kolekeeney/.config/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
@@ -7892,12 +7892,6 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[5.0.0, 5.0.0]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -7906,7 +7900,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/5.0.201/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.201/RuntimeIdentifierGraph.json"
       }
     }
   }
