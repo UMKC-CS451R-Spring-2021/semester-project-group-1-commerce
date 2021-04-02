@@ -5,7 +5,20 @@
 <head>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
     <style>
+
+        a, p {
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+        }
+
         body {
             background-color: #4FA800;
         }
@@ -14,11 +27,7 @@
             color: white;
         }
 
-        h1{
-            font-family: 'Poppins', sans-serif;
-        }
-
-        .fade-in{
+        .fade-in {
             animation: fadeInAnimation ease 4s;
         }
 
@@ -31,22 +40,34 @@
             0% {
                 opacity: 0;
             }
+
             100% {
                 opacity: 1;
             }
         }
 
-         @@keyframes appear {
-            to   { visibility: visible; }
+        @@keyframes appear {
+            to {
+                visibility: visible;
+            }
         }
 
-        .btn{
+        .btnhome {
+            padding: 10px;
+            width: 200px;
             border: solid 1px;
+            border-radius: 5px;
             border-color: black;
             background-color: darkgreen;
             color: white;
-            cursor: pointer;
             margin-top: 50px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        input:hover {
+            color: black;
+            opacity: .75;
+            cursor: pointer;
         }
 
         .vcenter {
@@ -54,18 +75,16 @@
             top: 0;
             bottom: 0;
             left: 0;
-            right:0;
+            right: 0;
             display: flex;
             justify-content: center; /* add to align horizontal */
             align-items: center; /* add to align vertical */
         }
 
-        .logo{
-            padding-left: 145px;
+        .logo {
+            padding-left: 140px;
             padding-bottom: 50px;
         }
-
-
     </style>
 </head>
 
@@ -78,7 +97,7 @@
             <div class="text-center">
                 <h1 class="display-4 fade-in">Welcome!</h1>
                 <h1 class="display-4 appear">Commerce Banking App</h1>
-                <a class="nav-link white" asp-area="Identity" asp-page="/Account/Login"><input class="btn" value="Click Me To Login Here" /></a>
+                <a class="nav-link white" asp-area="Identity" asp-page="/Account/Login"><input class="btnhome" value="Click Me To Login Here"/></a>
             </div>
         </div>
     </div>
