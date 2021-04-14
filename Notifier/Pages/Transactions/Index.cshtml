@@ -66,7 +66,9 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Transaction[0].TransactionDate)
+                <a asp-page="./Index" asp-route-sortOrder="@Model.DateSort">
+                    @Html.DisplayNameFor(model => model.Transaction[0].TransactionDate)
+                    </a>
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Transaction[0].TransactionTime)
