@@ -774,3 +774,8 @@ C:\Users\Armquist\source\repos\Notifier\Notifier\obj\Debug\net5.0\ref\Notifier.d
 C:\Users\Armquist\source\repos\Notifier\Notifier\obj\Debug\net5.0\Notifier.pdb
 C:\Users\Armquist\source\repos\Notifier\Notifier\obj\Debug\net5.0\Notifier.genruntimeconfig.cache
 C:\Users\Armquist\source\repos\Notifier\Notifier\obj\Debug\net5.0\Razor\Pages\Transactions\FilteredTransactions.cshtml.g.cs
+C:\Users\Armquist\source\repos\Notifier\Notifier\obj\Debug\net5.0\Razor\Pages\Rules\Create.cshtml.g.cs
+C:\Users\Armquist\source\repos\Notifier\Notifier\obj\Debug\net5.0\Razor\Pages\Rules\Delete.cshtml.g.cs
+C:\Users\Armquist\source\repos\Notifier\Notifier\obj\Debug\net5.0\Razor\Pages\Rules\Details.cshtml.g.cs
+C:\Users\Armquist\source\repos\Notifier\Notifier\obj\Debug\net5.0\Razor\Pages\Rules\Edit.cshtml.g.cs
+C:\Users\Armquist\source\repos\Notifier\Notifier\obj\Debug\net5.0\Razor\Pages\Rules\Index.cshtml.g.cs

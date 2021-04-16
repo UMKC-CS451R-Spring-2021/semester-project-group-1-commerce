@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Notifier.Data;
 
 namespace Notifier.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210414004113_user_Rule")]
+    partial class user_Rule
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -218,23 +220,14 @@ namespace Notifier.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("BeforeAfterDate")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("BeforeAfterTime")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("DepositWithdrawlFilter")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("DepositWithdrawlFilter")
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("DescriptionFilter")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("LocationFilter")
                         .HasColumnType("TEXT");
-
-                    b.Property<int>("MoreLessEqualTrans")
-                        .HasColumnType("INTEGER");
 
                     b.Property<string>("OwnerID")
                         .HasColumnType("TEXT");
@@ -262,8 +255,8 @@ namespace Notifier.Data.Migrations
                     b.Property<decimal>("Balance")
                         .HasColumnType("decimal(18, 2)");
 
-                    b.Property<int>("DepositWithdrawl")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("DepositWithdrawl")
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Description")
                         .HasColumnType("TEXT");

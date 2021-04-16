@@ -1,0 +1,79 @@
+﻿@page
+@model Notifier.Pages.Rules.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>NotificationRule</h4>
+    <hr />
+    <dl class="row">
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NotificationRule.OwnerID)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.NotificationRule.BeforeAfterDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NotificationRule.BeforeAfterDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.NotificationRule.TransactionDateFilter)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NotificationRule.TransactionDateFilter)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.NotificationRule.BeforeAfterTime)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NotificationRule.BeforeAfterTime)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.NotificationRule.TransactionTimeFilter)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NotificationRule.TransactionTimeFilter)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.NotificationRule.LocationFilter)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NotificationRule.LocationFilter)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.NotificationRule.DepositWithdrawlFilter)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NotificationRule.DepositWithdrawlFilter)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.NotificationRule.MoreLessEqualTrans)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NotificationRule.MoreLessEqualTrans)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.NotificationRule.TransAmountFilter)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NotificationRule.TransAmountFilter)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.NotificationRule.DescriptionFilter)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NotificationRule.DescriptionFilter)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="NotificationRule.RuleID" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-page="./Index">Back to List</a>
+    </form>
+</div>
