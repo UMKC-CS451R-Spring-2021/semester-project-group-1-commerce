@@ -25,7 +25,7 @@ namespace Notifier.Models
         public decimal Balance { get; set; }
 		
 		[Display(Name = "Deposit/Withdrawl")]
-        public string DepositWithdrawl { get; set; }
+        public DepoType DepositWithdrawl { get; set; }
 		
 		[Display(Name = "Transaction Amount")]
 		[Column(TypeName = "decimal(18, 2)")]
@@ -34,4 +34,9 @@ namespace Notifier.Models
         public string Description { get; set; }
         
     }
+	public enum DepoType
+	{
+		CR = 1,
+		DR = 2
+	}
 }

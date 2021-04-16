@@ -36,7 +36,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Transaction.DepositWithdrawl" class="control-label"></label>
-                <input asp-for="Transaction.DepositWithdrawl" class="form-control" />
+                <select asp-for="Transaction.DepositWithdrawl" asp-items="Html.GetEnumSelectList<DepoType>()" class="form-control"></select>
                 <span asp-validation-for="Transaction.DepositWithdrawl" class="text-danger"></span>
             </div>
             <div class="form-group">

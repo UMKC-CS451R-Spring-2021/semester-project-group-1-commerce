@@ -1,4 +1,3 @@
-using Notifier.Authorization;
 using Notifier.Data;
 using Notifier.Models;
 using Microsoft.AspNetCore.Authorization;
@@ -21,10 +20,15 @@ namespace Notifier.PagesTransactions
         {
         }
 
+        public string DateSort { get; set; }
+        public string CurrentSort { get; set; }
+
         public IList<Transaction> Transaction { get; set; }
 
-        public async Task OnGetAsync()
+        public async Task OnGetAsync(string sortOrder)
         {
+            DateSort = sortOrder == "Date" ? "date_desc" : "Date";
+
             var Transactions = from c in Context.Transaction
                            select c;
 
@@ -38,6 +42,20 @@ namespace Notifier.PagesTransactions
             // {
                 Transactions = Transactions.Where(c => c.OwnerID == currentUserId);
             // }
+
+            switch (sortOrder)
+            {
+                case "Date":
+                    Transactions = Transactions.OrderBy(s => s.TransactionDate);
+                    break;
+                case "date_desc":
+                    Transactions = Transactions.OrderByDescending(s => s.TransactionDate);
+                    break;
+                default:
+                    Transactions = Transactions.OrderByDescending(s => s.TransactionDate);
+                    break;
+            }
+
 
             Transaction = await Transactions.ToListAsync();
         }
