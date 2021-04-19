@@ -12,8 +12,12 @@ a {
   color: #0366d6;
 }
 
+a:hover{
+    text-decoration: underline;
+}
+
 body {
-    background-color: #4FA800;
+    background-color: rgba(79,168,0,.75);
 }
 
 .btn-primary {
