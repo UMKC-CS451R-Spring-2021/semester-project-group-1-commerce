@@ -41,17 +41,4 @@ namespace Notifier.Models
 
 		public string DescriptionFilter { get; set; }
 	}
-	public enum TimeShare
-	{
-		Before = 1,
-		After = 2,
-		Same = 3
-	}
-
-	public enum NumComparator
-	{
-		Above = 1,
-		Below = 2,
-		Equals = 3
-	}
 }

@@ -11,6 +11,8 @@
 
     <style>
 
+        a.header           
+
         a, p {
             font-family: 'Open Sans', sans-serif;
         }
@@ -20,7 +22,7 @@
         }
 
         body {
-            background-color: #4FA800;
+            background-color: rgba(79,168,0,.75);
         }
 
         .white {
@@ -72,7 +74,7 @@
 
         .vcenter {
             position: absolute;
-            top: 0;
+            top: 50px;
             bottom: 0;
             left: 0;
             right: 0;
@@ -82,23 +84,35 @@
         }
 
         .logo {
+            margin-top: -50px;
             padding-left: 140px;
             padding-bottom: 50px;
         }
     </style>
 </head>
 
-<div>
-    <div class="vcenter">
-        <div>
-            <div class="logo">
-                <img src="https://i.imgur.com/D0D9grU.png" height="100" length="500" />
-            </div>
-            <div class="text-center">
-                <h1 class="display-4 fade-in">Welcome!</h1>
-                <h1 class="display-4 appear">Commerce Banking App</h1>
-                <a class="nav-link white" asp-area="Identity" asp-page="/Account/Login"><input class="btnhome" value="Click Me To Login Here"/></a>
+<body>
+    <header></header>
+    <div>
+        <div class="vcenter">
+            <div>
+                <div class="logo">
+                    <img src="https://i.imgur.com/D0D9grU.png" height="100" length="500" />
+                </div>
+                <div class="text-center">
+                    <h1 class="display-4 fade-in">Welcome!</h1>
+                    <h1 class="display-4 appear">Commerce Banking App</h1>
+                    @if ((HttpContext.User != null) && (HttpContext.User.Identity.IsAuthenticated))
+                    {
+                        <a class="nav-link white" asp-page="/Transactions/Index"><input class="btnhome" value="Click Me To Login Here" /></a>
+                    }
+                    else
+                    {
+                        <a class="nav-link white" asp-area="Identity" asp-page="/Account/Login"><input class="btnhome" value="Click Me To Login Here" /></a>
+                    }
+
+                </div>
             </div>
         </div>
     </div>
-</div>
+</body>
