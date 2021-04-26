@@ -6,6 +6,7 @@ using Notifier.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Notifier.Data;
+using System;
 
 namespace Notifier.Pages.Transactions
 {
@@ -25,17 +26,21 @@ namespace Notifier.Pages.Transactions
 
         public IList<Transaction> FilteredList { get; set; }
 
-
+        public IList<Notification> notificaionsGotten { get; set; }
 
         public async Task OnGetAsync()
         {
 
             var currentUserId = UserManager.GetUserId(User);
+            DateTime currentTime = DateTime.Now;
 
             var matcchedTransactions = from t in Context.Transaction
                                        from r in Context.NotificationRule
+                                       from n in Context.Notification
                                        where t.Location.Contains(r.LocationFilter) && t.OwnerID == currentUserId
                                        select t;
+
+            FilteredList = matcchedTransactions.ToList();
 
             var locationTransactions = from t in Context.Transaction
                                        from r in Context.Location
@@ -63,7 +68,26 @@ namespace Notifier.Pages.Transactions
                                           && t.OwnerID == currentUserId
                                           select t;
 
+
+            //create Location Notifications
             Transaction = await matcchedTransactions.ToListAsync();
+            for (int i = 0; i < FilteredList.Count; i++)
+            {
+                bool isDuplicate = false;
+                for (int k = 0; k < notificaionsGotten.Count; k++)
+                {
+                    if ((notificaionsGotten[k].transactionID == FilteredList[i].TransactionId) && (notificaionsGotten[k].Reason == ("Transaction from: " + FilteredList[i].Location)))
+                    {
+                        isDuplicate = true;
+                    }
+                }
+                if (isDuplicate == false)
+                {
+                    var newNotification = new Notification {OwnerID = FilteredList[i].OwnerID, IsRead = false, transactionID = FilteredList[i].TransactionId, Reason = ("Transaction from: " + FilteredList[i].Location), CreationDate = currentTime};
+                    Context.Notification.Add(newNotification);
+                }
+            }
+            Context.SaveChanges();
         }
     }
 }
