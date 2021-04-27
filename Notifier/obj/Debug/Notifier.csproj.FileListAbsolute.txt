@@ -201,3 +201,8 @@ C:\Users\Armquist\source\repos\Notifier\Notifier\obj\Debug\Notifier.genruntimeco
 C:\Users\Armquist\source\repos\Notifier\Notifier\obj\Debug\Razor\Areas\Identity\Pages\Account\Manage\Index.cshtml.g.cs
 C:\Users\Armquist\source\repos\Notifier\Notifier\obj\Debug\Razor\Areas\Identity\Pages\Account\Manage\_ManageNav.cshtml.g.cs
 C:\Users\Armquist\source\repos\Notifier\Notifier\obj\Debug\Razor\Areas\Identity\Pages\Account\Manage\_ViewImports.cshtml.g.cs
+C:\Users\Armquist\source\repos\Notifier\Notifier\obj\Debug\Razor\Pages\Notifications\Create.cshtml.g.cs
+C:\Users\Armquist\source\repos\Notifier\Notifier\obj\Debug\Razor\Pages\Notifications\Delete.cshtml.g.cs
+C:\Users\Armquist\source\repos\Notifier\Notifier\obj\Debug\Razor\Pages\Notifications\Details.cshtml.g.cs
+C:\Users\Armquist\source\repos\Notifier\Notifier\obj\Debug\Razor\Pages\Notifications\Edit.cshtml.g.cs
+C:\Users\Armquist\source\repos\Notifier\Notifier\obj\Debug\Razor\Pages\Notifications\Index.cshtml.g.cs

@@ -36,12 +36,11 @@ namespace Notifier.Pages.Transactions
 
             var matcchedTransactions = from t in Context.Transaction
                                        from r in Context.NotificationRule
-                                       from n in Context.Notification
                                        where t.Location.Contains(r.LocationFilter) && t.OwnerID == currentUserId
                                        select t;
 
-            FilteredList = matcchedTransactions.ToList();
-
+            Transaction = await matcchedTransactions.ToListAsync();
+            /*
             var locationTransactions = from t in Context.Transaction
                                        from r in Context.Location
                                        where t.Location.Contains(r.location) && t.OwnerID == currentUserId
@@ -68,7 +67,6 @@ namespace Notifier.Pages.Transactions
                                           && t.OwnerID == currentUserId
                                           select t;
 
-
             //create Location Notifications
             Transaction = await matcchedTransactions.ToListAsync();
             for (int i = 0; i < FilteredList.Count; i++)
@@ -88,6 +86,7 @@ namespace Notifier.Pages.Transactions
                 }
             }
             Context.SaveChanges();
+            */
         }
     }
 }
