@@ -6,6 +6,7 @@ namespace Notifier.Models
 {
     public class Transaction
     {
+		[Key]
         public int TransactionId { get; set; }
 
 		// user ID from AspNetUser table.
@@ -36,7 +37,7 @@ namespace Notifier.Models
     }
 	public enum DepoType
 	{
-		CR = 1,
-		DR = 2
+		Deposit = 1,
+		Withdraw = 2
 	}
 }

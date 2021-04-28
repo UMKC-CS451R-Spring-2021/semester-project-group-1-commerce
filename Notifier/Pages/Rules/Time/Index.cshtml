@@ -1,0 +1,49 @@
+﻿@page
+@model Notifier.Pages.Rules.Time.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TimeRule[0].OwnerID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TimeRule[0].BeforeAfterTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TimeRule[0].TransactionTimeFilter)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.TimeRule) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.OwnerID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BeforeAfterTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TransactionTimeFilter)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.TimeRuleID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.TimeRuleID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.TimeRuleID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

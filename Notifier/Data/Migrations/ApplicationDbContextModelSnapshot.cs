@@ -212,6 +212,86 @@ namespace Notifier.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("Notifier.Models.AmountRule", b =>
+                {
+                    b.Property<int>("AmountRuleID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("GreaterLess")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("OwnerID")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("amountNotification")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("AmountRuleID");
+
+                    b.ToTable("AmountRule");
+                });
+
+            modelBuilder.Entity("Notifier.Models.DescriptionRule", b =>
+                {
+                    b.Property<int>("DescriptionRuleID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("OwnerID")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("descriptionNotification")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("DescriptionRuleID");
+
+                    b.ToTable("DescriptionRule");
+                });
+
+            modelBuilder.Entity("Notifier.Models.LocationRule", b =>
+                {
+                    b.Property<int>("LocationRuleID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("OwnerID")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("location")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("LocationRuleID");
+
+                    b.ToTable("LocationRule");
+                });
+
+            modelBuilder.Entity("Notifier.Models.Notification", b =>
+                {
+                    b.Property<int>("NotificationID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("CreationDate")
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("IsRead")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("OwnerID")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Reason")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("transactionID")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("NotificationID");
+
+                    b.ToTable("Notification");
+                });
+
             modelBuilder.Entity("Notifier.Models.NotificationRule", b =>
                 {
                     b.Property<int>("RuleID")
@@ -251,6 +331,26 @@ namespace Notifier.Data.Migrations
                     b.HasKey("RuleID");
 
                     b.ToTable("NotificationRule");
+                });
+
+            modelBuilder.Entity("Notifier.Models.TimeRule", b =>
+                {
+                    b.Property<int>("TimeRuleID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("BeforeAfterTime")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("OwnerID")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("TransactionTimeFilter")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("TimeRuleID");
+
+                    b.ToTable("TimeRule");
                 });
 
             modelBuilder.Entity("Notifier.Models.Transaction", b =>

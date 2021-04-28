@@ -6,6 +6,7 @@ using Notifier.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Notifier.Data;
+using System;
 
 namespace Notifier.Pages.Transactions
 {
@@ -23,17 +24,22 @@ namespace Notifier.Pages.Transactions
 
         public IList<Transaction> Transaction { get;set; }
 
+        public IList<Transaction> FilteredList { get; set; }
+
+        public IList<Notification> notificaionsGotten { get; set; }
+
         public async Task OnGetAsync()
         {
-                var Transactions = from c in Context.Transaction
-                                   select c;
 
-                var currentUserId = UserManager.GetUserId(User);
+            var currentUserId = UserManager.GetUserId(User);
+            DateTime currentTime = DateTime.Now;
 
-                Transactions = Transactions.Where(c => c.Location.Contains("SPAIN")
-                                       && c.OwnerID == currentUserId);
+            var matcchedTransactions = from t in Context.Transaction
+                                       from r in Context.NotificationRule
+                                       where t.Location.Contains(r.LocationFilter) && t.OwnerID == currentUserId
+                                       select t;
 
-                Transaction = await Transactions.ToListAsync();
+            Transaction = await matcchedTransactions.ToListAsync();
         }
     }
 }

@@ -2,28 +2,27 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
-using Notifier.Data;
-using Notifier.Models;
+using Microsoft.Extensions.Logging;
 
-namespace Notifier.Pages.Rules
+namespace Notifier.Pages
 {
-    public class IndexModel : PageModel
-    {
-        private readonly Notifier.Data.ApplicationDbContext _context;
 
-        public IndexModel(Notifier.Data.ApplicationDbContext context)
+    public class NavModel : PageModel
+    {
+        private readonly ILogger<DashboardModel> _logger;
+
+        public NavModel(ILogger<DashboardModel> logger)
         {
-            _context = context;
+            _logger = logger;
         }
 
-        public IList<NotificationRule> NotificationRule { get;set; }
-
-        public async Task OnGetAsync()
+        public void OnGet()
         {
-            NotificationRule = await _context.NotificationRule.ToListAsync();
+
         }
     }
 }
+
