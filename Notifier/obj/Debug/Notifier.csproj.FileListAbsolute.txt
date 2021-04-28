@@ -174,10 +174,6 @@ C:\Users\Armquist\source\repos\Notifier\Notifier\obj\Debug\Razor\Pages\Dashboard
 C:\Users\Armquist\source\repos\Notifier\Notifier\obj\Debug\Razor\Pages\Error.cshtml.g.cs
 C:\Users\Armquist\source\repos\Notifier\Notifier\obj\Debug\Razor\Pages\Index.cshtml.g.cs
 C:\Users\Armquist\source\repos\Notifier\Notifier\obj\Debug\Razor\Pages\Privacy.cshtml.g.cs
-C:\Users\Armquist\source\repos\Notifier\Notifier\obj\Debug\Razor\Pages\Rules\Create.cshtml.g.cs
-C:\Users\Armquist\source\repos\Notifier\Notifier\obj\Debug\Razor\Pages\Rules\Delete.cshtml.g.cs
-C:\Users\Armquist\source\repos\Notifier\Notifier\obj\Debug\Razor\Pages\Rules\Details.cshtml.g.cs
-C:\Users\Armquist\source\repos\Notifier\Notifier\obj\Debug\Razor\Pages\Rules\Edit.cshtml.g.cs
 C:\Users\Armquist\source\repos\Notifier\Notifier\obj\Debug\Razor\Pages\Rules\Index.cshtml.g.cs
 C:\Users\Armquist\source\repos\Notifier\Notifier\obj\Debug\Razor\Pages\Shared\_Layout.cshtml.g.cs
 C:\Users\Armquist\source\repos\Notifier\Notifier\obj\Debug\Razor\Pages\Shared\_LoginPartial.cshtml.g.cs

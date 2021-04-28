@@ -25,6 +25,8 @@ namespace Notifier.Pages.Notifications
 
         public IList<Transaction> FilteredList { get; set; }
 
+        public IList<Transaction> DescriptionList { get; set; }
+
         public IList<Notification> Notification { get;set; }
 
         public async Task OnGetAsync()
@@ -38,18 +40,20 @@ namespace Notifier.Pages.Notifications
                                        where t.Location.Contains(r.location) && t.OwnerID == currentUserId
                                        select t;
 
+            var descriptionTransactions = from t in Context.Transaction
+                                          from r in Context.DescriptionRule
+                                          where t.Description.Contains(r.descriptionNotification) && t.OwnerID == currentUserId
+                                          select t;
+
             var allNotifications = from n in Context.Notification
                                    select n;
 
             FilteredList = locationTransactions.ToList();
+            DescriptionList = descriptionTransactions.ToList();
             Notification = allNotifications.ToList();
             /*
 
 
-            var descriptionTransactions = from t in Context.Transaction
-                                          from r in Context.Description
-                                          where t.Description.Contains(r.description) && t.OwnerID == currentUserId
-                                          select t;
 
             var amountTransactions = from t in Context.Transaction
                                      from r in Context.Amount
@@ -88,6 +92,30 @@ namespace Notifier.Pages.Notifications
                 }
             }
 
+            allNotifications = from n in Context.Notification
+                               select n;
+
+            Notification = allNotifications.ToList();
+
+            //description notifications
+            for (int i = 0; i < DescriptionList.Count; i++)
+            {
+                bool isDuplicate = false;
+
+                for (int k = 0; k < Notification.Count; k++)
+                {
+                    if ((Notification[k].transactionID == DescriptionList[i].TransactionId) && (Notification[k].Reason == ("Transaction of: " + DescriptionList[i].Description)))
+                    {
+                        isDuplicate = true;
+                    }
+                }
+
+                if (isDuplicate == false)
+                {
+                    var newNotification = new Notification { OwnerID = DescriptionList[i].OwnerID, IsRead = false, transactionID = DescriptionList[i].TransactionId, Reason = ("Transaction of: " + DescriptionList[i].Description), CreationDate = currentTime };
+                    Context.Notification.Add(newNotification);
+                }
+            }
 
             Context.SaveChanges();
             Notification = await Context.Notification.ToListAsync();

@@ -2,11 +2,11 @@
 @model Notifier.Pages.Rules.Location.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Location Settings";
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<h1>Locations Being Tracked</h1>
 
 <p>
     <a asp-page="Create">Create New</a>
@@ -23,9 +23,6 @@
     <tbody>
 @foreach (var item in Model.LocationRule) {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.OwnerID)
-            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.location)
             </td>

@@ -1,23 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Notifier.Authorization;
 using Notifier.Data;
 using Notifier.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Threading.Tasks;
 
 namespace Notifier.Pages.Rules.Description
 {
-    public class CreateModel : PageModel
+    #region snippetCtor
+    public class CreateModel : CI_BasePageModel
     {
-        private readonly Notifier.Data.ApplicationDbContext _context;
-
-        public CreateModel(Notifier.Data.ApplicationDbContext context)
+        public CreateModel(
+            ApplicationDbContext context,
+            IAuthorizationService authorizationService,
+            UserManager<IdentityUser> userManager)
+            : base(context, authorizationService, userManager)
         {
-            _context = context;
         }
+        #endregion
 
         public IActionResult OnGet()
         {
@@ -27,7 +29,7 @@ namespace Notifier.Pages.Rules.Description
         [BindProperty]
         public DescriptionRule DescriptionRule { get; set; }
 
-        // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
+        #region snippet_Create
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
@@ -35,10 +37,23 @@ namespace Notifier.Pages.Rules.Description
                 return Page();
             }
 
-            _context.DescriptionRule.Add(DescriptionRule);
-            await _context.SaveChangesAsync();
+            DescriptionRule.OwnerID = UserManager.GetUserId(User);
+
+            /*
+            // requires using ContactManager.Authorization;
+            var isAuthorized = await AuthorizationService.AuthorizeAsync(
+                                                        User, LocationRule,
+                                                        TransactionOperations.Create);
+            if (!isAuthorized.Succeeded)
+            {
+                return Forbid();
+            }
+            */
+            Context.DescriptionRule.Add(DescriptionRule);
+            await Context.SaveChangesAsync();
 
             return RedirectToPage("./Index");
         }
+        #endregion
     }
 }

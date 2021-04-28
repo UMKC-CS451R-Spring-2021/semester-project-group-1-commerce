@@ -1,29 +1,34 @@
-﻿using System;
+﻿using Notifier.Data;
+using Notifier.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
-using Notifier.Data;
-using Notifier.Models;
 
 namespace Notifier.Pages.Rules.Description
 {
-    public class IndexModel : PageModel
+    public class IndexModel : CI_BasePageModel
     {
-        private readonly Notifier.Data.ApplicationDbContext _context;
-
-        public IndexModel(Notifier.Data.ApplicationDbContext context)
+        public IndexModel(
+            ApplicationDbContext context,
+            IAuthorizationService authorizationService,
+            UserManager<IdentityUser> userManager)
+            : base(context, authorizationService, userManager)
         {
-            _context = context;
         }
 
-        public IList<DescriptionRule> DescriptionRule { get;set; }
+        public IList<DescriptionRule> DescriptionRule { get; set; }
 
         public async Task OnGetAsync()
         {
-            DescriptionRule = await _context.DescriptionRule.ToListAsync();
+            var currentUserId = UserManager.GetUserId(User);
+            var getRuleDescription = from l in Context.DescriptionRule
+                                  where l.OwnerID == currentUserId
+                                  select l;
+
+            DescriptionRule = await getRuleDescription.ToListAsync();
         }
     }
 }

@@ -5,9 +5,96 @@
     ViewData["Title"] = "Index";
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
+<head>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+    <style>
+
+        a.header
+
+        a, p {
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: rgba(79,168,0,.75);
+        }
+
+        .white {
+            color: white;
+        }
+
+        .fade-in {
+            animation: fadeInAnimation ease 4s;
+        }
+
+        .appear {
+            animation: appear 0s 1.5s forwards;
+            visibility: hidden;
+        }
+
+        @@keyframes fadeInAnimation {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @@keyframes appear {
+            to {
+                visibility: visible;
+            }
+        }
+
+        .btnhome {
+            padding: 10px;
+            width: 255px;
+            border: solid 1px;
+            border-radius: 5px;
+            border-color: black;
+            background-color: darkgreen;
+            color: white;
+            margin-top: 50px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        input:hover {
+            color: black;
+            opacity: .75;
+            cursor: pointer;
+        }
+
+        .vcenter {
+            position: absolute;
+            top: 50px;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center; /* add to align horizontal */
+            align-items: center; /* add to align vertical */
+        }
+
+        .logo {
+            margin-top: -50px;
+            padding-left: 140px;
+            padding-bottom: 50px;
+        }
+    </style>
+</head>
 <h1>Notifications</h1>
-
+<a class="nav-link white" asp-page="/Rules/Index"><input class="btnhome" value="Configure Notification Rules" /></a>
 <table class="table">
     <thead>
         <tr>
