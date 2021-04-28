@@ -33,21 +33,18 @@ namespace Notifier.Pages.Notifications
             var currentUserId = UserManager.GetUserId(User);
             DateTime currentTime = DateTime.Now;
 
-            var matcchedTransactions = from t in Context.Transaction
-                                       from r in Context.NotificationRule
-                                       where t.Location.Contains(r.LocationFilter) && t.OwnerID == currentUserId
+            var locationTransactions = from t in Context.Transaction
+                                       from r in Context.LocationRule
+                                       where t.Location.Contains(r.location) && t.OwnerID == currentUserId
                                        select t;
 
             var allNotifications = from n in Context.Notification
                                    select n;
 
-            FilteredList = matcchedTransactions.ToList();
+            FilteredList = locationTransactions.ToList();
             Notification = allNotifications.ToList();
             /*
-            var locationTransactions = from t in Context.Transaction
-                                       from r in Context.Location
-                                       where t.Location.Contains(r.location) && t.OwnerID == currentUserId
-                                       select t;
+
 
             var descriptionTransactions = from t in Context.Transaction
                                           from r in Context.Description
@@ -91,8 +88,7 @@ namespace Notifier.Pages.Notifications
                 }
             }
 
-            //var newNotification = new Notification { OwnerID = FilteredList[0].OwnerID, IsRead = false, transactionID = FilteredList[0].TransactionId, Reason = ("Transaction from: " + FilteredList[0].Location), CreationDate = currentTime };
-            //Context.Notification.Add(newNotification);
+
             Context.SaveChanges();
             Notification = await Context.Notification.ToListAsync();
         }

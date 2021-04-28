@@ -37,10 +37,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Pages\Rules\Description\" />
-    <Folder Include="Pages\Rules\Amount\" />
-    <Folder Include="Pages\Rules\Time\" />
-    <Folder Include="Pages\Rules\Location\" />
     <Folder Include="wwwroot\css\Images\" />
     <Folder Include="Images\" />
   </ItemGroup>

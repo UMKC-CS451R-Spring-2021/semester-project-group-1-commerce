@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Notifier.Models
 {
-    public class Location
+    public class LocationRule
     {
         [Key]
         public int LocationRuleID { get; set; }

@@ -15,10 +15,10 @@ namespace Notifier.Data
         }
         public DbSet<Notifier.Models.Transaction> Transaction { get; set; }
         public DbSet<Notifier.Models.NotificationRule> NotificationRule { get; set; }
-        public DbSet<Notifier.Models.Amount> Amount { get; set; }
-        public DbSet<Notifier.Models.Time> Time { get; set; }
-        public DbSet<Notifier.Models.Location> Location { get; set; }
-        public DbSet<Notifier.Models.Description> Description { get; set; }
+        public DbSet<Notifier.Models.AmountRule> AmountRule { get; set; }
+        public DbSet<Notifier.Models.TimeRule> TimeRule { get; set; }
+        public DbSet<Notifier.Models.LocationRule> LocationRule { get; set; }
+        public DbSet<Notifier.Models.DescriptionRule> DescriptionRule { get; set; }
         public DbSet<Notifier.Models.Notification> Notification { get; set; }
     }
 }

@@ -13,6 +13,7 @@ namespace Notifier.Models
         public int NotificationID { get; set;}
         public string OwnerID { get; set; }
         public string Reason {get; set;}
+        [Display(Name = "Date Notified")]
         public DateTime CreationDate { get; set; }
         public int transactionID { get; set; }
         public bool IsRead {get; set;}

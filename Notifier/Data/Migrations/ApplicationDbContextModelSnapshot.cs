@@ -212,7 +212,7 @@ namespace Notifier.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("Notifier.Models.Amount", b =>
+            modelBuilder.Entity("Notifier.Models.AmountRule", b =>
                 {
                     b.Property<int>("AmountRuleID")
                         .ValueGeneratedOnAdd()
@@ -224,15 +224,15 @@ namespace Notifier.Data.Migrations
                     b.Property<string>("OwnerID")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("amount")
+                    b.Property<int>("amountNotification")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("AmountRuleID");
 
-                    b.ToTable("Amount");
+                    b.ToTable("AmountRule");
                 });
 
-            modelBuilder.Entity("Notifier.Models.Description", b =>
+            modelBuilder.Entity("Notifier.Models.DescriptionRule", b =>
                 {
                     b.Property<int>("DescriptionRuleID")
                         .ValueGeneratedOnAdd()
@@ -241,15 +241,15 @@ namespace Notifier.Data.Migrations
                     b.Property<string>("OwnerID")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("description")
+                    b.Property<string>("descriptionNotification")
                         .HasColumnType("TEXT");
 
                     b.HasKey("DescriptionRuleID");
 
-                    b.ToTable("Description");
+                    b.ToTable("DescriptionRule");
                 });
 
-            modelBuilder.Entity("Notifier.Models.Location", b =>
+            modelBuilder.Entity("Notifier.Models.LocationRule", b =>
                 {
                     b.Property<int>("LocationRuleID")
                         .ValueGeneratedOnAdd()
@@ -263,7 +263,7 @@ namespace Notifier.Data.Migrations
 
                     b.HasKey("LocationRuleID");
 
-                    b.ToTable("Location");
+                    b.ToTable("LocationRule");
                 });
 
             modelBuilder.Entity("Notifier.Models.Notification", b =>
@@ -333,7 +333,7 @@ namespace Notifier.Data.Migrations
                     b.ToTable("NotificationRule");
                 });
 
-            modelBuilder.Entity("Notifier.Models.Time", b =>
+            modelBuilder.Entity("Notifier.Models.TimeRule", b =>
                 {
                     b.Property<int>("TimeRuleID")
                         .ValueGeneratedOnAdd()
@@ -350,7 +350,7 @@ namespace Notifier.Data.Migrations
 
                     b.HasKey("TimeRuleID");
 
-                    b.ToTable("Time");
+                    b.ToTable("TimeRule");
                 });
 
             modelBuilder.Entity("Notifier.Models.Transaction", b =>

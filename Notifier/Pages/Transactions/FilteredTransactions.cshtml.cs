@@ -40,53 +40,6 @@ namespace Notifier.Pages.Transactions
                                        select t;
 
             Transaction = await matcchedTransactions.ToListAsync();
-            /*
-            var locationTransactions = from t in Context.Transaction
-                                       from r in Context.Location
-                                       where t.Location.Contains(r.location) && t.OwnerID == currentUserId
-                                       select t;
-
-            var descriptionTransactions = from t in Context.Transaction
-                                          from r in Context.Description
-                                          where t.Description.Contains(r.description) && t.OwnerID == currentUserId
-                                          select t;
-
-            var amountTransactions =      from t in Context.Transaction
-                                          from r in Context.Amount
-                                          where (r.GreaterLess == (NumComparator)1 && t.TransAmount > r.amount) 
-                                          || (r.GreaterLess == (NumComparator)2 && t.TransAmount < r.amount) 
-                                          || (r.GreaterLess == (NumComparator)3 && t.TransAmount == r.amount)
-                                          && t.OwnerID == currentUserId
-                                          select t;
-
-           var timeTransactions =         from t in Context.Transaction
-                                          from r in Context.Time
-                                          where (r.BeforeAfterTime == (TimeShare)1 && t.TransactionTime > r.TransactionTimeFilter)
-                                          || (r.BeforeAfterTime == (TimeShare)2 && t.TransactionTime < r.TransactionTimeFilter)
-                                          || (r.BeforeAfterTime == (TimeShare)3 && t.TransactionTime == r.TransactionTimeFilter)
-                                          && t.OwnerID == currentUserId
-                                          select t;
-
-            //create Location Notifications
-            Transaction = await matcchedTransactions.ToListAsync();
-            for (int i = 0; i < FilteredList.Count; i++)
-            {
-                bool isDuplicate = false;
-                for (int k = 0; k < notificaionsGotten.Count; k++)
-                {
-                    if ((notificaionsGotten[k].transactionID == FilteredList[i].TransactionId) && (notificaionsGotten[k].Reason == ("Transaction from: " + FilteredList[i].Location)))
-                    {
-                        isDuplicate = true;
-                    }
-                }
-                if (isDuplicate == false)
-                {
-                    var newNotification = new Notification {OwnerID = FilteredList[i].OwnerID, IsRead = false, transactionID = FilteredList[i].TransactionId, Reason = ("Transaction from: " + FilteredList[i].Location), CreationDate = currentTime};
-                    Context.Notification.Add(newNotification);
-                }
-            }
-            Context.SaveChanges();
-            */
         }
     }
 }

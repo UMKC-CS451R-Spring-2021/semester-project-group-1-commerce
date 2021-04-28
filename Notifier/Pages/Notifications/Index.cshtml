@@ -6,28 +6,16 @@
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<h1>Notifications</h1>
 
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Notification[0].OwnerID)
-            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Notification[0].Reason)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Notification[0].CreationDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Notification[0].transactionID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Notification[0].IsRead)
             </th>
             <th></th>
         </tr>
@@ -36,24 +24,10 @@
 @foreach (var item in Model.Notification) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.OwnerID)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.Reason)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.CreationDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.transactionID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsRead)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.NotificationID">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.NotificationID">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.NotificationID">Delete</a>
             </td>
         </tr>
 }

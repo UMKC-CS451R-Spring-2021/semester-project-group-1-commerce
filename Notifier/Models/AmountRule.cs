@@ -7,14 +7,20 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Notifier.Models
 {
-    public class Description
+    public class AmountRule
     {
         [Key]
-        public int DescriptionRuleID { get; set; }
+        public int AmountRuleID { get; set; }
 
         // user ID from AspNetUser table.
         public string OwnerID { get; set; }
-
-        public string description { get; set; }
+        public NumComparator GreaterLess { get; set; }
+        public int amountNotification { get; set; }
+    }
+    public enum NumComparator
+    {
+        Above = 1,
+        Below = 2,
+        Equals = 3
     }
 }

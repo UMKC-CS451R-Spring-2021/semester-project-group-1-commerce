@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Notifier.Models
 {
-    public class Time
+    public class TimeRule
     {
         [Key]
         public int TimeRuleID { get; set; }
