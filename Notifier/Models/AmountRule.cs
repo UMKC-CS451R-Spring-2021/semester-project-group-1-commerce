@@ -15,6 +15,8 @@ namespace Notifier.Models
         // user ID from AspNetUser table.
         public string OwnerID { get; set; }
         public NumComparator GreaterLess { get; set; }
+
+        [Column(TypeName = "decimal(18, 2)")]
         public int amountNotification { get; set; }
     }
     public enum NumComparator

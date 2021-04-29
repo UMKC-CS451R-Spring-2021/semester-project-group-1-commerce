@@ -1,29 +1,34 @@
-﻿using System;
+﻿using Notifier.Data;
+using Notifier.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
-using Notifier.Data;
-using Notifier.Models;
 
 namespace Notifier.Pages.Rules.Amount
 {
-    public class IndexModel : PageModel
+    public class IndexModel : CI_BasePageModel
     {
-        private readonly Notifier.Data.ApplicationDbContext _context;
-
-        public IndexModel(Notifier.Data.ApplicationDbContext context)
+        public IndexModel(
+            ApplicationDbContext context,
+            IAuthorizationService authorizationService,
+            UserManager<IdentityUser> userManager)
+            : base(context, authorizationService, userManager)
         {
-            _context = context;
         }
 
-        public IList<AmountRule> AmountRule { get;set; }
+        public IList<AmountRule> AmountRule { get; set; }
 
         public async Task OnGetAsync()
         {
-            AmountRule = await _context.AmountRule.ToListAsync();
+            var currentUserId = UserManager.GetUserId(User);
+            var getRuleAmount = from l in Context.AmountRule
+                                  where l.OwnerID == currentUserId
+                                  select l;
+
+            AmountRule = await getRuleAmount.ToListAsync();
         }
     }
 }

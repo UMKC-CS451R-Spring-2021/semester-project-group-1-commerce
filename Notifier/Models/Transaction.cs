@@ -37,7 +37,10 @@ namespace Notifier.Models
     }
 	public enum DepoType
 	{
-		Deposit = 1,
-		Withdraw = 2
+		[Display(Name = "Deposit")]
+		Deposit,
+
+		[Display(Name = "Withdraw")]
+		Withdraw
 	}
 }
