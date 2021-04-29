@@ -27,6 +27,10 @@ namespace Notifier.Pages.Notifications
 
         public IList<Transaction> DescriptionList { get; set; }
 
+        public IList<Transaction> AmountGreaterList { get; set; }
+        public IList<Transaction> AmountLessList { get; set; }
+        public IList<Transaction> AmountEqualList { get; set; }
+
         public IList<Notification> Notification { get;set; }
 
         public async Task OnGetAsync()
@@ -45,32 +49,43 @@ namespace Notifier.Pages.Notifications
                                           where t.Description.Contains(r.descriptionNotification) && t.OwnerID == currentUserId
                                           select t;
 
+            var amountGreaterTransactions = from t in Context.Transaction
+                                     from r in Context.AmountRule
+                                     where (r.GreaterLess == (NumComparator)1 && t.TransAmount > r.amountNotification && t.DepositWithdrawl == (DepoType)1)
+                                     && t.OwnerID == currentUserId
+                                     select t;
+
+            var amountLessTransactions =    from t in Context.Transaction
+                                            from r in Context.AmountRule
+                                            where (r.GreaterLess == (NumComparator)2 && t.TransAmount < r.amountNotification && t.DepositWithdrawl == (DepoType)1)
+                                            && t.OwnerID == currentUserId
+                                            select t;
+
+            var amountEqualTransactions = from t in Context.Transaction
+                                            from r in Context.AmountRule
+                                            where (r.GreaterLess == (NumComparator)3 && t.TransAmount == r.amountNotification && t.DepositWithdrawl == (DepoType)1)
+                                            && t.OwnerID == currentUserId
+                                            select t;
+
             var allNotifications = from n in Context.Notification
                                    select n;
 
             FilteredList = locationTransactions.ToList();
             DescriptionList = descriptionTransactions.ToList();
+            AmountGreaterList = amountGreaterTransactions.ToList();
+            AmountLessList = amountLessTransactions.ToList();
+            AmountEqualList = amountEqualTransactions.ToList();
             Notification = allNotifications.ToList();
+
             /*
-
-
-
-            var amountTransactions = from t in Context.Transaction
-                                     from r in Context.Amount
-                                     where (r.GreaterLess == (NumComparator)1 && t.TransAmount > r.amount)
-                                     || (r.GreaterLess == (NumComparator)2 && t.TransAmount < r.amount)
-                                     || (r.GreaterLess == (NumComparator)3 && t.TransAmount == r.amount)
-                                     && t.OwnerID == currentUserId
-                                     select t;
-
-            var timeTransactions = from t in Context.Transaction
-                                   from r in Context.Time
-                                   where (r.BeforeAfterTime == (TimeShare)1 && t.TransactionTime > r.TransactionTimeFilter)
-                                   || (r.BeforeAfterTime == (TimeShare)2 && t.TransactionTime < r.TransactionTimeFilter)
-                                   || (r.BeforeAfterTime == (TimeShare)3 && t.TransactionTime == r.TransactionTimeFilter)
-                                   && t.OwnerID == currentUserId
-                                   select t;
-            */
+var timeTransactions = from t in Context.Transaction
+                       from r in Context.Time
+                       where (r.BeforeAfterTime == (TimeShare)1 && t.TransactionTime > r.TransactionTimeFilter)
+                       || (r.BeforeAfterTime == (TimeShare)2 && t.TransactionTime < r.TransactionTimeFilter)
+                       || (r.BeforeAfterTime == (TimeShare)3 && t.TransactionTime == r.TransactionTimeFilter)
+                       && t.OwnerID == currentUserId
+                       select t;
+*/
 
             //create Location Notifications
             for (int i = 0; i < FilteredList.Count; i++)
@@ -113,6 +128,66 @@ namespace Notifier.Pages.Notifications
                 if (isDuplicate == false)
                 {
                     var newNotification = new Notification { OwnerID = DescriptionList[i].OwnerID, IsRead = false, transactionID = DescriptionList[i].TransactionId, Reason = ("Transaction of: " + DescriptionList[i].Description), CreationDate = currentTime };
+                    Context.Notification.Add(newNotification);
+                }
+            }
+
+            Notification = allNotifications.ToList();
+
+            //amount notifications
+            for (int i = 0; i < AmountGreaterList.Count; i++)
+            {
+                bool isDuplicate = false;
+
+                for (int k = 0; k < Notification.Count; k++)
+                {
+                    if ((Notification[k].transactionID == AmountGreaterList[i].TransactionId) && (Notification[k].Reason == ("Transaction above: " + AmountGreaterList[i].TransAmount)))
+                    {
+                        isDuplicate = true;
+                    }
+                }
+
+                if (isDuplicate == false)
+                {
+                    var newNotification = new Notification { OwnerID = AmountGreaterList[i].OwnerID, IsRead = false, transactionID = AmountGreaterList[i].TransactionId, Reason = ("Transaction above: " + AmountGreaterList[i].TransAmount), CreationDate = currentTime };
+                    Context.Notification.Add(newNotification);
+                }
+            }
+
+            for (int i = 0; i < AmountLessList.Count; i++)
+            {
+                bool isDuplicate = false;
+
+                for (int k = 0; k < Notification.Count; k++)
+                {
+                    if ((Notification[k].transactionID == AmountLessList[i].TransactionId) && (Notification[k].Reason == ("Transaction below: " + AmountLessList[i].TransAmount)))
+                    {
+                        isDuplicate = true;
+                    }
+                }
+
+                if (isDuplicate == false)
+                {
+                    var newNotification = new Notification { OwnerID = AmountLessList[i].OwnerID, IsRead = false, transactionID = AmountLessList[i].TransactionId, Reason = ("Transaction below: " + AmountLessList[i].TransAmount), CreationDate = currentTime };
+                    Context.Notification.Add(newNotification);
+                }
+            }
+
+            for (int i = 0; i < AmountEqualList.Count; i++)
+            {
+                bool isDuplicate = false;
+
+                for (int k = 0; k < Notification.Count; k++)
+                {
+                    if ((Notification[k].transactionID == AmountEqualList[i].TransactionId) && (Notification[k].Reason == ("Transaction of exactly: " + AmountEqualList[i].TransAmount)))
+                    {
+                        isDuplicate = true;
+                    }
+                }
+
+                if (isDuplicate == false)
+                {
+                    var newNotification = new Notification { OwnerID = AmountEqualList[i].OwnerID, IsRead = false, transactionID = AmountEqualList[i].TransactionId, Reason = ("Transaction of exactly: " + AmountEqualList[i].TransAmount), CreationDate = currentTime };
                     Context.Notification.Add(newNotification);
                 }
             }

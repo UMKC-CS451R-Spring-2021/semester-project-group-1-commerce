@@ -15,9 +15,6 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.AmountRule[0].OwnerID)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.AmountRule[0].GreaterLess)
             </th>
             <th>
@@ -29,9 +26,6 @@
     <tbody>
 @foreach (var item in Model.AmountRule) {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.OwnerID)
-            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.GreaterLess)
             </td>

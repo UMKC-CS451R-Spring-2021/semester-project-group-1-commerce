@@ -34,12 +34,15 @@ namespace Notifier.Pages.Transactions
             var currentUserId = UserManager.GetUserId(User);
             DateTime currentTime = DateTime.Now;
 
-            var matcchedTransactions = from t in Context.Transaction
-                                       from r in Context.NotificationRule
-                                       where t.Location.Contains(r.LocationFilter) && t.OwnerID == currentUserId
-                                       select t;
+            var amountTransactions = from t in Context.Transaction
+                                     from r in Context.AmountRule
+                                     where (r.GreaterLess == (NumComparator)1 && t.TransAmount > r.amountNotification)
+                                     || (r.GreaterLess == (NumComparator)2 && t.TransAmount < r.amountNotification)
+                                     || (r.GreaterLess == (NumComparator)3 && t.TransAmount == r.amountNotification)
+                                     && t.OwnerID == currentUserId
+                                     select t;
 
-            Transaction = await matcchedTransactions.ToListAsync();
+            Transaction = await amountTransactions.ToListAsync();
         }
     }
 }
