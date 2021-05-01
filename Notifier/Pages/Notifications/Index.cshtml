@@ -1,5 +1,6 @@
 ﻿@page
 @model Notifier.Pages.Notifications.IndexModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 @{
     ViewData["Title"] = "Index";
@@ -65,7 +66,18 @@
             border-color: black;
             background-color: darkgreen;
             color: white;
-            margin-top: 50px;
+            margin-top: 10px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .btnhome_small {
+            padding: 10px;
+            width: 125px;
+            border: solid 1px;
+            border-radius: 5px;
+            border-color: black;
+            background-color: darkgreen;
+            color: white;
             font-family: 'Poppins', sans-serif;
         }
 
@@ -95,6 +107,9 @@
 </head>
 <h1>Notifications</h1>
 <a class="nav-link white" asp-page="/Rules/Index"><input class="btnhome" value="Configure Notification Rules" /></a>
+<form method="post" action="">
+    <button type="submit" asp-page-handler="Flush"> Mark all as Read </button>
+</form>
 <table class="table">
     <thead>
         <tr>
@@ -108,15 +123,24 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Notification) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Reason)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreationDate)
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.Notification)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Reason)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreationDate)
+                </td>
+                <td>
+                    <a class="details" asp-page="/Transactions/Details" asp-route-id="@item.transactionID">Transaction Details</a>
+                </td>
+                <td>
+                    <form method="post" action="">
+                        <button type="submit" asp-page-handler="Read" asp-route-id="@item.NotificationID"> Mark as Read </button>
+                    </form>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

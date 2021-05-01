@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Notifier.Data;
 using System;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Notifier.Pages.Notifications
 {
@@ -193,8 +194,46 @@ var timeTransactions = from t in Context.Transaction
             }
 
             Context.SaveChanges();
-            Notification = await Context.Notification.ToListAsync();
+
+            var UnreadNotifications = from n in Context.Notification
+                                      where n.IsRead == false
+                                      select n;
+
+            Notification = await UnreadNotifications.ToListAsync();
+        }
+        public async Task<IActionResult> OnPostReadAsync(int id)
+        {
+            var marker = await Context.Notification.FindAsync(id);
+
+            if (marker != null)
+            {
+                marker.IsRead = true;
+                await Context.SaveChangesAsync();
+            }
+            return RedirectToPage("");
+        }
+
+        public async Task<IActionResult> OnPostFlushAsync()
+        {
+            var currentUserId = UserManager.GetUserId(User);
+
+            var allNotifications = from n in Context.Notification
+                                   where n.OwnerID == currentUserId
+                                   select n;
+
+           var notifList = await allNotifications.ToListAsync();
+
+            for(int i = 0; i < notifList.Count; i++)
+            {
+                var marker = await Context.Notification.FindAsync(notifList[i].NotificationID);
+                marker.IsRead = true;
+            }
+
+                await Context.SaveChangesAsync();
+
+            return RedirectToPage("");
         }
     }
+
 }
 

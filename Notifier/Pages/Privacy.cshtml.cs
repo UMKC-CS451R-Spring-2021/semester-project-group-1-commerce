@@ -22,5 +22,10 @@ namespace Notifier.Pages
         public void OnGet()
         {
         }
+
+        public async Task<IActionResult> OnPostHelp()
+        {
+            return RedirectToPage("/Dashboard");
+        }
     }
 }
