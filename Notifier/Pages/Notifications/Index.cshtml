@@ -133,6 +133,9 @@
                     @Html.DisplayFor(modelItem => item.CreationDate)
                 </td>
                 <td>
+                    <a class="details" asp-page="/Transactions/Details" asp-route-id="@item.transactionID">Transaction Details</a>
+                </td>
+                <td>
                     <form method="post" action="">
                         <button type="submit" asp-page-handler="Read" asp-route-id="@item.NotificationID"> Mark as Read </button>
                     </form>
