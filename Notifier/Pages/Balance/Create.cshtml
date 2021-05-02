@@ -20,6 +20,11 @@
                 <span asp-validation-for="BalanceModel.BalanceAmount" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="BalanceModel.OwnerName" class="control-label"></label>
+                <input asp-for="BalanceModel.OwnerName" class="form-control" />
+                <span asp-validation-for="BalanceModel.OwnerName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
