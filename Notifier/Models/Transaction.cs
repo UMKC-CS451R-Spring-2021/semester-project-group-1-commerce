@@ -12,14 +12,11 @@ namespace Notifier.Models
 		// user ID from AspNetUser table.
     	public string OwnerID { get; set; }
 		
-		[Display(Name = "Date")]
-        [DataType(DataType.Date)]
+		[Display(Name = "Date & Time")]
         public DateTime TransactionDate { get; set; }
-		
-		[Display(Name = "Time")]
-        [DataType(DataType.Time)]
-        public DateTime TransactionTime { get; set; }
-		
+
+		public DateTime TransactionTime { get; set; }
+
 		public string Location { get; set; }
 		
 		[Column(TypeName = "decimal(18, 2)")]
@@ -38,9 +35,9 @@ namespace Notifier.Models
 	public enum DepoType
 	{
 		[Display(Name = "Deposit")]
-		Deposit,
+		Deposit = 1,
 
 		[Display(Name = "Withdraw")]
-		Withdraw
+		Withdraw = 2
 	}
 }

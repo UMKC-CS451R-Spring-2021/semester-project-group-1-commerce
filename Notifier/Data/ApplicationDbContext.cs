@@ -20,5 +20,6 @@ namespace Notifier.Data
         public DbSet<Notifier.Models.LocationRule> LocationRule { get; set; }
         public DbSet<Notifier.Models.DescriptionRule> DescriptionRule { get; set; }
         public DbSet<Notifier.Models.Notification> Notification { get; set; }
+        public DbSet<Notifier.Models.BalanceModel> BalanceModel { get; set; }
     }
 }

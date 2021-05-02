@@ -21,6 +21,7 @@ namespace Notifier.Pages.Notifications
 
         public IActionResult OnGet()
         {
+
             return Page();
         }
 

@@ -224,3 +224,8 @@ C:\Users\Armquist\source\repos\Notifier\Notifier\obj\Debug\Razor\Pages\Rules\Loc
 C:\Users\Armquist\source\repos\Notifier\Notifier\obj\Debug\Razor\Pages\Rules\Location\Index.cshtml.g.cs
 C:\Users\Armquist\source\repos\Notifier\Notifier\bin\SendGrid.dll
 C:\Users\Armquist\source\repos\Notifier\Notifier\bin\StarkbankEcdsa.dll
+C:\Users\Armquist\source\repos\Notifier\Notifier\obj\Debug\Razor\Pages\Balance\Create.cshtml.g.cs
+C:\Users\Armquist\source\repos\Notifier\Notifier\obj\Debug\Razor\Pages\Balance\Delete.cshtml.g.cs
+C:\Users\Armquist\source\repos\Notifier\Notifier\obj\Debug\Razor\Pages\Balance\Details.cshtml.g.cs
+C:\Users\Armquist\source\repos\Notifier\Notifier\obj\Debug\Razor\Pages\Balance\Edit.cshtml.g.cs
+C:\Users\Armquist\source\repos\Notifier\Notifier\obj\Debug\Razor\Pages\Balance\Index.cshtml.g.cs

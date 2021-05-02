@@ -225,11 +225,31 @@ namespace Notifier.Data.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<int>("amountNotification")
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("decimal(18, 2)");
 
                     b.HasKey("AmountRuleID");
 
                     b.ToTable("AmountRule");
+                });
+
+            modelBuilder.Entity("Notifier.Models.BalanceModel", b =>
+                {
+                    b.Property<int>("BalanceID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<decimal>("BalanceAmount")
+                        .HasColumnType("decimal(18, 2)");
+
+                    b.Property<string>("OwnerID")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("OwnerName")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("BalanceID");
+
+                    b.ToTable("BalanceModel");
                 });
 
             modelBuilder.Entity("Notifier.Models.DescriptionRule", b =>
