@@ -1,14 +1,93 @@
 @page
 @model PrivacyModel
-@{
-    ViewData["Title"] = "Privacy Policy";
-}
+@{ ViewData["Title"] = "Privacy Policy"; }
 <h1>@ViewData["Title"]</h1>
 
-<div>
-    <form method="post" action="">
-        <button type="submit" asp-page-handler="Help">Build</button>
-    </form>
-</div>
+<head>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 
-<p>Use this page to detail your site's privacy policy.</p>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            background-image: url("https://i.imgur.com/CXYEAds.png");
+        }
+
+        a, p {
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        a {
+            color: blue;
+        }
+
+        a:hover {
+            color: indigo;
+            text-decoration: underline;
+        }
+
+
+        input:hover {
+            color: black;
+            opacity: .75;
+            cursor: pointer;
+        }
+
+        .btnhome {
+            text-align: center;
+            padding: 10px;
+            width: 125px;
+            border: solid 1px;
+            border-radius: 5px;
+            border-color: black;
+            background-color: darkgreen;
+            color: white;
+            margin-top: 5px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+        }
+
+        table {
+            background-color: white;
+        }
+
+        th {
+            background-color: white;
+            color: black;
+        }
+
+        tr:nth-child(odd) {
+            background-color: #006747;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #006747;
+            opacity: .8;
+            color: white;
+        }
+
+        .details {
+            color: #FFB300;
+            text-decoration: underline;
+        }
+
+        .details:hover {
+            color: indigo;
+        }
+    </style>
+</head>
+
+<h1>
+    Locations Being Tracked<
+
+    <p>
+        Site created by students in Group 1 of UMKC's CS451R class - Spring 2021. User information will be stored within our
+        database as securely as possible. No data will be sold or used with malicious intent.
+    </p>
