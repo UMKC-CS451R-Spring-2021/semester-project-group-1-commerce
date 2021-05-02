@@ -8,10 +8,31 @@
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+        <style>
+        a, p {
+            font-family: 'Open Sans', sans-serif;
+        }
 
-    <style>
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+        }
 
-        a.header
+        body {
+            background-image: url("https://i.imgur.com/CXYEAds.png");
+        }
+
+        .white {
+            color: white;
+        }
+
+        .fade-in {
+            animation: fadeInAnimation ease 4s;
+        }
+
+        .appear {
+            animation: appear 0s 1.5s forwards;
+            visibility: hidden;
+        }
 
         a, p {
             font-family: 'Open Sans', sans-serif;
@@ -47,14 +68,8 @@
                 opacity: 1;
             }
         }
-
-        @@keyframes appear {
-            to {
-                visibility: visible;
-            }
-        }
-
         .btnhome {
+            text-align:center;
             padding: 10px;
             width: 225px;
             border: solid 1px;
@@ -62,7 +77,7 @@
             border-color: black;
             background-color: darkgreen;
             color: white;
-            margin-top: 50px;
+            margin-top: 5px;
             font-family: 'Poppins', sans-serif;
         }
 
@@ -71,22 +86,15 @@
             opacity: .75;
             cursor: pointer;
         }
-
-        .vcenter {
-            position: absolute;
-            top: 50px;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            display: flex;
-            justify-content: center; /* add to align horizontal */
-            align-items: center; /* add to align vertical */
+        .top{
+            margin-top: 25px;
         }
-
-        .logo {
-            margin-top: -50px;
-            padding-left: 140px;
-            padding-bottom: 50px;
+        .back{
+            color: blue;
+        }
+        .back:hover{
+            color:indigo;
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -94,19 +102,19 @@
 <body>
     <header></header>
     <div>
-        <div class="vcenter">
+        <div>
             <div>
                 <div class="text-center">
-                    <h1 class="display-4 fade-in">Rule Settings</h1>
-                    <h1 class="display-4 appear">Select a Rule</h1>
+                    <h1 class="top">Rule Settings</h1>
+                    <h4>Select a Rule</h4>
                     @if ((HttpContext.User != null) && (HttpContext.User.Identity.IsAuthenticated))
                     {
                         <a class="nav-link white" asp-page="/Rules/Location/Index"><input class="btnhome" value="Rules based off Location" /></a>
                         <a class="nav-link white" asp-page="/Rules/Description/Index"><input class="btnhome" value="Rules based off Store" /></a>
                         <a class="nav-link white" asp-page="/Rules/Time/Index"><input class="btnhome" value="Rules based off Time" /></a>
                         <a class="nav-link white" asp-page="/Rules/Amount/Index"><input class="btnhome" value="Rules based off Amount" /></a>
+                        <a class="back" asp-page="/Notifications/Index">Back to Notifications</a>
                     }
-
                 </div>
             </div>
         </div>

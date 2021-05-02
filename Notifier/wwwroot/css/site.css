@@ -1,6 +1,12 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 
+
+body {
+    background-image: url("https://i.imgur.com/CXYEAds.png");
+    #background-color: rgba(79,168,0,.75);
+}
+
 a.navbar-brand {
   white-space: normal;
   text-align: center;
@@ -14,10 +20,6 @@ a {
 
 a:hover{
     text-decoration: underline;
-}
-
-body {
-    background-color: rgba(79,168,0,.75);
 }
 
 .btn-primary {
@@ -59,6 +61,11 @@ button.accept-policy {
   line-height: inherit;
 }
 
+body {
+    background-image: url("https://i.imgur.com/CXYEAds.png");
+    #background-color: rgba(79,168,0,.75);
+}
+
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
@@ -69,6 +76,9 @@ html {
 body {
   /* Margin bottom by footer height */
   margin-bottom: 60px;
+  background-image: url("https://i.imgur.com/CXYEAds.png");
+  #background-color: rgba(79,168,0,.75);
+}
 }
 .footer {
   background-color: #fff;

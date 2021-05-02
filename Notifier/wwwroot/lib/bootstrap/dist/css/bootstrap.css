@@ -60,7 +60,7 @@ body {
     line-height: 1.5;
     color: #212529;
     text-align: left;
-    background-color: rgba(79,168,0,.75);
+    background-image: url("https://i.imgur.com/CXYEAds.png");
 }
 
 [tabindex="-1"]:focus {

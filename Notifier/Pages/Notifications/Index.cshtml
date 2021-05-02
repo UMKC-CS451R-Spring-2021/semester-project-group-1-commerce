@@ -14,9 +14,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 
     <style>
-
-        a.header
-
         a, p {
             font-family: 'Open Sans', sans-serif;
         }
@@ -26,59 +23,22 @@
         }
 
         body {
-            background-color: rgba(79,168,0,.75);
-        }
-
-        .white {
-            color: white;
-        }
-
-        .fade-in {
-            animation: fadeInAnimation ease 4s;
-        }
-
-        .appear {
-            animation: appear 0s 1.5s forwards;
-            visibility: hidden;
-        }
-
-        @@keyframes fadeInAnimation {
-            0% {
-                opacity: 0;
-            }
-
-            100% {
-                opacity: 1;
-            }
-        }
-
-        @@keyframes appear {
-            to {
-                visibility: visible;
-            }
+            background-image: url("https://i.imgur.com/CXYEAds.png");
         }
 
         .btnhome {
             padding: 10px;
-            width: 255px;
+            width: 250px;
             border: solid 1px;
             border-radius: 5px;
             border-color: black;
             background-color: darkgreen;
             color: white;
             margin-top: 10px;
+            margin-bottom: 15px;
             font-family: 'Poppins', sans-serif;
-        }
-
-        .btnhome_small {
-            padding: 10px;
-            width: 125px;
-            border: solid 1px;
-            border-radius: 5px;
-            border-color: black;
-            background-color: darkgreen;
-            color: white;
-            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            text-align: center;
         }
 
         input:hover {
@@ -87,22 +47,22 @@
             cursor: pointer;
         }
 
-        .vcenter {
-            position: absolute;
-            top: 50px;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            display: flex;
-            justify-content: center; /* add to align horizontal */
-            align-items: center; /* add to align vertical */
+        th {
+            background-color: white;
+            color: black;
         }
 
-        .logo {
-            margin-top: -50px;
-            padding-left: 140px;
-            padding-bottom: 50px;
+        tr:nth-child(odd) {
+            background-color: #006747;
+            color: white;
         }
+
+        tr:nth-child(even) {
+            background-color: #006747;
+            opacity: .8;
+            color: white;
+        }
+
     </style>
 </head>
 <h1>Notifications</h1>
