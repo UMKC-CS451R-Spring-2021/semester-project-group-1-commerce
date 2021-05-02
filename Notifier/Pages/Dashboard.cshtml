@@ -4,15 +4,97 @@
 
 <head>
     <style>
-        body {
-            background-size: contain;
-            background-image: url("https://i.imgur.com/Qye4kNu.png");
+        .bottom {
+            position: absolute;
+            bottom: 5px;
+            left: 0%;
+            right: 0%;
+            text-align: center;
+        }
+        .btnhome {
+            text-align: center;
+            padding: 1px;
+            width: 165px;
+            border: solid 1px;
+            border-radius: 5px;
+            border-color: black;
+            background-color: rgba(79,168,0,.75);
+            color: white;
+            margin-top: 5px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 12px;
+        }
+        input:hover {
+            color: black;
+            cursor: pointer;
+            background-color: green;
+        }
+        .con{
+            margin-top: 20px;
+        }
+        .head {
+            color: white
+        }
+        .card{
+            background-color:darkgreen;
         }
     </style>
 </head>
 
 <div class="login">
     <div class="text-center">
-        <h1 class="display-4"></h1>
+        <h4 class="display-4">Welcome @User.Identity.Name!</h4>
     </div>
 </div>
+
+
+<div class="row">
+    <div class="col-md-6 con">
+        <div class="card" style="height: 100px; width: 1080px; margin-left:15px;">
+            <div class="content">
+                <div class="head">
+                    <h4 class="mb-0 text-center">Balance</h4>
+                </div>
+                <div class="ui hidden divider"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-6 con">
+                <div class="card">
+                    <div class="content">
+                        <div class="head">
+                            <h4 class="mb-0 text-center">Transactions</h4>
+                        </div>
+                        <div class="canvas-wrapper">
+                            <canvas class="chart chartjs-render-monitor" id="trafficflow" style="display: block; height: 352px; width: 705px;" height="704" width="1410"></canvas>
+                        </div>
+                        <div class="bottom">
+                            <a asp-page="/Transactions/Index"><input class="btnhome text-center" value="Click To View Transactions" /></a>
+                        </div>
+                        <div class="ui hidden divider"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 con">
+                <div class="card">
+                    <div class="content">
+                        <div class="head">
+                            <h4 class="mb-0 text-center">Notifications</h4>
+                        </div>
+                        <div class="canvas-wrapper">
+                            <canvas style="display: block; height: 352px; width: 705px;" height="704" width="1410"></canvas>
+                        </div>
+                        <div class="bottom">
+                            <a asp-page="/Notifications/Index"><input class="btnhome text-center" value="Click To View Notifications" /></a>
+                        </div>
+                        <div class="ui hidden divider"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

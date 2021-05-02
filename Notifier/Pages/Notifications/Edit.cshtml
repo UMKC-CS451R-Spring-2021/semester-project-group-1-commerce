@@ -16,6 +16,14 @@
 
 
     <style>
+        a {
+            color: blue;
+        }
+
+        a:hover {
+            color: indigo;
+            text-decoration: underline;
+        }
         a, p {
             font-family: 'Open Sans', sans-serif;
         }
@@ -26,6 +34,19 @@
 
         body {
             background-image: url("https://i.imgur.com/CXYEAds.png");
+        }
+        .btnhome {
+            text-align: center;
+            padding: 10px;
+            width: 125px;
+            border: solid 1px;
+            border-radius: 5px;
+            border-color: black;
+            background-color: darkgreen;
+            color: white;
+            margin-top: 5px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
         }
     </style>
 </head>
@@ -64,7 +85,7 @@
                 </label>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Save" class="btnhome" />
             </div>
         </form>
     </div>
