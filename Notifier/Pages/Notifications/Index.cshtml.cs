@@ -196,7 +196,7 @@ var timeTransactions = from t in Context.Transaction
             Context.SaveChanges();
 
             var UnreadNotifications = from n in Context.Notification
-                                      where n.IsRead == false
+                                      where n.IsRead == false && n.OwnerID == currentUserId
                                       select n;
 
             Notification = await UnreadNotifications.ToListAsync();

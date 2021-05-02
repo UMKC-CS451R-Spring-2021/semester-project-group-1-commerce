@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "vmuinujwHYzDi1+PJeibpKTjoKSkYUwEaSL1KsjPWwn+oQxrswNpV9OP7rsRLBxgqh6FApuPQoA6TrPdx1H72A==",
+  "dgSpecHash": "qn9u0pDDCgPmTAtCl0qfpuMZgOyYYzoLLVXXe/4JByxjNk35x2YEFgdqL1yr9TQrRs9osg7JcobWDaXb6yxvvg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Armquist\\source\\repos\\Notifier\\Notifier\\Notifier.csproj",
   "expectedPackageFiles": [
@@ -69,10 +69,12 @@
     "C:\\Users\\Armquist\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
     "C:\\Users\\Armquist\\.nuget\\packages\\newtonsoft.json\\11.0.2\\newtonsoft.json.11.0.2.nupkg.sha512",
     "C:\\Users\\Armquist\\.nuget\\packages\\runtime.native.system\\4.3.0\\runtime.native.system.4.3.0.nupkg.sha512",
+    "C:\\Users\\Armquist\\.nuget\\packages\\sendgrid\\9.23.0\\sendgrid.9.23.0.nupkg.sha512",
     "C:\\Users\\Armquist\\.nuget\\packages\\sqlitepclraw.bundle_e_sqlite3\\2.0.4\\sqlitepclraw.bundle_e_sqlite3.2.0.4.nupkg.sha512",
     "C:\\Users\\Armquist\\.nuget\\packages\\sqlitepclraw.core\\2.0.4\\sqlitepclraw.core.2.0.4.nupkg.sha512",
     "C:\\Users\\Armquist\\.nuget\\packages\\sqlitepclraw.lib.e_sqlite3\\2.0.4\\sqlitepclraw.lib.e_sqlite3.2.0.4.nupkg.sha512",
     "C:\\Users\\Armquist\\.nuget\\packages\\sqlitepclraw.provider.dynamic_cdecl\\2.0.4\\sqlitepclraw.provider.dynamic_cdecl.2.0.4.nupkg.sha512",
+    "C:\\Users\\Armquist\\.nuget\\packages\\starkbank-ecdsa\\1.3.1\\starkbank-ecdsa.1.3.1.nupkg.sha512",
     "C:\\Users\\Armquist\\.nuget\\packages\\system.collections\\4.3.0\\system.collections.4.3.0.nupkg.sha512",
     "C:\\Users\\Armquist\\.nuget\\packages\\system.collections.concurrent\\4.3.0\\system.collections.concurrent.4.3.0.nupkg.sha512",
     "C:\\Users\\Armquist\\.nuget\\packages\\system.collections.immutable\\5.0.0\\system.collections.immutable.5.0.0.nupkg.sha512",
