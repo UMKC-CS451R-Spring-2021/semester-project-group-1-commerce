@@ -445,3 +445,7 @@ C:/Users/Armquist/source/repos/Notifier/Notifier/obj/Debug/Razor/Pages/Rules/Loc
 /Users/kolekeeney/Desktop/Notifier/Notifier/obj/Debug/ref/Notifier.dll
 /Users/kolekeeney/Desktop/Notifier/Notifier/obj/Debug/Notifier.pdb
 /Users/kolekeeney/Desktop/Notifier/Notifier/obj/Debug/Notifier.genruntimeconfig.cache
+/Users/kolekeeney/Desktop/Notifier/Notifier/obj/Debug/Razor/Pages/Rules/Create.cshtml.g.cs
+/Users/kolekeeney/Desktop/Notifier/Notifier/obj/Debug/Razor/Pages/Rules/Delete.cshtml.g.cs
+/Users/kolekeeney/Desktop/Notifier/Notifier/obj/Debug/Razor/Pages/Rules/Details.cshtml.g.cs
+/Users/kolekeeney/Desktop/Notifier/Notifier/obj/Debug/Razor/Pages/Rules/Edit.cshtml.g.cs

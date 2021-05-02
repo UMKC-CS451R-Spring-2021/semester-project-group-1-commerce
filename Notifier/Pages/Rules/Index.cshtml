@@ -9,13 +9,6 @@
         <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 
         <style>
-
-<<<<<<< Updated upstream
-            a, p {
-                font-family: 'Open Sans', sans-serif;
-=======
-        a.header
-
         a, p {
             font-family: 'Open Sans', sans-serif;
         }
@@ -41,12 +34,6 @@
             visibility: hidden;
         }
 
-        @@keyframes fadeInAnimation {
-            0% {
-                opacity: 0;
->>>>>>> Stashed changes
-            }
-
             h1, h2, h3, h4, h5, h6 {
                 font-family: 'Poppins', sans-serif;
             }
@@ -55,7 +42,6 @@
                 background-color: white;
             }
 
-<<<<<<< Updated upstream
             th {
                 background-color: white;
                 color: black;
@@ -76,7 +62,7 @@
                 color: #FFB300;
                 text-decoration: underline;
             }
-=======
+
         .btnhome {
             text-align:center;
             padding: 10px;
@@ -124,93 +110,8 @@
                         <a class="nav-link white" asp-page="/Rules/Amount/Index"><input class="btnhome" value="Rules based off Amount" /></a>
                         <a class="back" asp-page="/Notifications/Index">Back to Notifications</a>
                     }
->>>>>>> Stashed changes
-
-            .details:hover {
-                color: black;
-            }
-        </style>
-
-    </head>
-
-@{
-    ViewData["Title"] = "Index";
-}
-
-<h1>Notification Rules</h1>
-
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.NotificationRule[0].BeforeAfterDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NotificationRule[0].TransactionDateFilter)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NotificationRule[0].BeforeAfterTime)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NotificationRule[0].TransactionTimeFilter)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NotificationRule[0].LocationFilter)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NotificationRule[0].DepositWithdrawlFilter)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NotificationRule[0].MoreLessEqualTrans)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NotificationRule[0].TransAmountFilter)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NotificationRule[0].DescriptionFilter)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.NotificationRule) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.BeforeAfterDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TransactionDateFilter)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BeforeAfterTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TransactionTimeFilter)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LocationFilter)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DepositWithdrawlFilter)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MoreLessEqualTrans)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TransAmountFilter)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DescriptionFilter)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.RuleID">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.RuleID">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.RuleID">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
