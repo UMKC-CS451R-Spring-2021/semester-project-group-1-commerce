@@ -6,22 +6,43 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Notifier.Authorization;
+using Notifier.Data;
+using Notifier.Models;
 
 namespace Notifier.Pages
 {
     [AllowAnonymous]
-    public class IndexModel : PageModel
+    public class IndexModel : XI_BasePageModel
     {
         private readonly ILogger<IndexModel> _logger;
 
-        public IndexModel(ILogger<IndexModel> logger)
-        {
-            _logger = logger;
-        }
+        public IndexModel(
+                ApplicationDbContext context,
+                IAuthorizationService authorizationService,
+                  UserManager<IdentityUser> userManager)
+                 : base(context, authorizationService, userManager)
+            {
+            }
 
-        public void OnGet()
+        public IActionResult OnGet()
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                var currentUser = UserManager.GetUserId(User);
+                var BalanceDup = from n in Context.BalanceModel
+                                 where n.OwnerID == currentUser
+                                 select n;
 
+                var BalanceDup2 = BalanceDup.ToList();
+                if(BalanceDup2.Count == 0)
+                {
+                    return RedirectToPage("/Balance/Create");
+                }
+                return Page();
+            }
+            return Page();
         }
     }
 }
