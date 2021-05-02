@@ -63,7 +63,6 @@ button.accept-policy {
 
 body {
     background-image: url("https://i.imgur.com/CXYEAds.png");
-    #background-color: rgba(79,168,0,.75);
 }
 
 /* Sticky footer styles
@@ -76,9 +75,6 @@ html {
 body {
   /* Margin bottom by footer height */
   margin-bottom: 60px;
-  background-image: url("https://i.imgur.com/CXYEAds.png");
-  #background-color: rgba(79,168,0,.75);
-}
 }
 .footer {
   background-color: #fff;
