@@ -58,7 +58,10 @@ namespace Notifier.Areas.Identity.Pages.Account.Manage
                 return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
             }
 
+            user.EmailConfirmed = true;
+            await _signInManager.RefreshSignInAsync(user);
             await LoadAsync(user);
+            
             return Page();
         }
 
