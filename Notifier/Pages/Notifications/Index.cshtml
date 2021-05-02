@@ -24,6 +24,8 @@
 
         body {
             background-image: url("https://i.imgur.com/CXYEAds.png");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
         }
 
         .btnhome {
@@ -62,7 +64,14 @@
             opacity: .8;
             color: white;
         }
+        .details {
+            color: #FFB300;
+            text-decoration: underline;
+        }
 
+        .details:hover{
+            color: indigo;
+        }
     </style>
 </head>
 <h1>Notifications</h1>
@@ -79,6 +88,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.Notification[0].CreationDate)
             </th>
+            <th></th>
             <th></th>
         </tr>
     </thead>
