@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/kolekeeney/Desktop/Commerce/Notifier/Notifier.csproj": {}
+    "/Users/kolekeeney/Desktop/Notifier/Notifier/Notifier.csproj": {}
   },
   "projects": {
-    "/Users/kolekeeney/Desktop/Commerce/Notifier/Notifier.csproj": {
+    "/Users/kolekeeney/Desktop/Notifier/Notifier/Notifier.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/kolekeeney/Desktop/Commerce/Notifier/Notifier.csproj",
+        "projectUniqueName": "/Users/kolekeeney/Desktop/Notifier/Notifier/Notifier.csproj",
         "projectName": "Notifier",
-        "projectPath": "/Users/kolekeeney/Desktop/Commerce/Notifier/Notifier.csproj",
+        "projectPath": "/Users/kolekeeney/Desktop/Notifier/Notifier/Notifier.csproj",
         "packagesPath": "/Users/kolekeeney/.nuget/packages/",
-        "outputPath": "/Users/kolekeeney/Desktop/Commerce/Notifier/obj/",
+        "outputPath": "/Users/kolekeeney/Desktop/Notifier/Notifier/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/kolekeeney/.config/NuGet/NuGet.Config"

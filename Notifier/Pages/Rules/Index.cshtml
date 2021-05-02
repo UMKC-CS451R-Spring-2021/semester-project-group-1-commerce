@@ -10,8 +10,41 @@
 
         <style>
 
+<<<<<<< Updated upstream
             a, p {
                 font-family: 'Open Sans', sans-serif;
+=======
+        a.header
+
+        a, p {
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-image: url("https://i.imgur.com/CXYEAds.png");
+        }
+
+        .white {
+            color: white;
+        }
+
+        .fade-in {
+            animation: fadeInAnimation ease 4s;
+        }
+
+        .appear {
+            animation: appear 0s 1.5s forwards;
+            visibility: hidden;
+        }
+
+        @@keyframes fadeInAnimation {
+            0% {
+                opacity: 0;
+>>>>>>> Stashed changes
             }
 
             h1, h2, h3, h4, h5, h6 {
@@ -22,6 +55,7 @@
                 background-color: white;
             }
 
+<<<<<<< Updated upstream
             th {
                 background-color: white;
                 color: black;
@@ -42,6 +76,55 @@
                 color: #FFB300;
                 text-decoration: underline;
             }
+=======
+        .btnhome {
+            text-align:center;
+            padding: 10px;
+            width: 225px;
+            border: solid 1px;
+            border-radius: 5px;
+            border-color: black;
+            background-color: darkgreen;
+            color: white;
+            margin-top: 5px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        input:hover {
+            color: black;
+            opacity: .75;
+            cursor: pointer;
+        }
+        .top{
+            margin-top: 25px;
+        }
+        .back{
+            color: blue;
+        }
+        .back:hover{
+            color:indigo;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <header></header>
+    <div>
+        <div>
+            <div>
+                <div class="text-center">
+                    <h1 class="top">Rule Settings</h1>
+                    <h4>Select a Rule</h4>
+                    @if ((HttpContext.User != null) && (HttpContext.User.Identity.IsAuthenticated))
+                    {
+                        <a class="nav-link white" asp-page="/Rules/Location/Index"><input class="btnhome" value="Rules based off Location" /></a>
+                        <a class="nav-link white" asp-page="/Rules/Description/Index"><input class="btnhome" value="Rules based off Store" /></a>
+                        <a class="nav-link white" asp-page="/Rules/Time/Index"><input class="btnhome" value="Rules based off Time" /></a>
+                        <a class="nav-link white" asp-page="/Rules/Amount/Index"><input class="btnhome" value="Rules based off Amount" /></a>
+                        <a class="back" asp-page="/Notifications/Index">Back to Notifications</a>
+                    }
+>>>>>>> Stashed changes
 
             .details:hover {
                 color: black;

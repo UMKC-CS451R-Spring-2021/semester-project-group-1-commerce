@@ -1,0 +1,91 @@
+﻿@page
+@model Notifier.Pages.Notifications.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+<head>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+    <style>
+        a, p {
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-image: url("https://i.imgur.com/CXYEAds.png");
+        }
+
+        .btnhome {
+            padding: 10px;
+            width: 250px;
+            border: solid 1px;
+            border-radius: 5px;
+            border-color: black;
+            background-color: darkgreen;
+            color: white;
+            margin-top: 10px;
+            margin-bottom: 15px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        input:hover {
+            color: black;
+            opacity: .75;
+            cursor: pointer;
+        }
+        th {
+            background-color: white;
+            color: black;
+        }
+
+        tr:nth-child(odd) {
+            background-color: #006747;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #006747;
+            opacity: .8;
+            color: white;
+        }
+
+    </style>
+</head>
+<h1>Notifications</h1>
+<a class="nav-link white" asp-page="/Rules/Index"><input class="btnhome" value="Configure Notification Rules" /></a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Notification[0].Reason)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Notification[0].CreationDate)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Notification) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Reason)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreationDate)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

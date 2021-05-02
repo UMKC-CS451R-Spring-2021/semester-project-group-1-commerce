@@ -7831,11 +7831,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/kolekeeney/Desktop/Commerce/Notifier/Notifier.csproj",
+      "projectUniqueName": "/Users/kolekeeney/Desktop/Notifier/Notifier/Notifier.csproj",
       "projectName": "Notifier",
-      "projectPath": "/Users/kolekeeney/Desktop/Commerce/Notifier/Notifier.csproj",
+      "projectPath": "/Users/kolekeeney/Desktop/Notifier/Notifier/Notifier.csproj",
       "packagesPath": "/Users/kolekeeney/.nuget/packages/",
-      "outputPath": "/Users/kolekeeney/Desktop/Commerce/Notifier/obj/",
+      "outputPath": "/Users/kolekeeney/Desktop/Notifier/Notifier/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/kolekeeney/.config/NuGet/NuGet.Config"
@@ -7920,5 +7920,13 @@
         "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.201/RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file /Users/kolekeeney/Desktop/Notifier/Notifier/obj/project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

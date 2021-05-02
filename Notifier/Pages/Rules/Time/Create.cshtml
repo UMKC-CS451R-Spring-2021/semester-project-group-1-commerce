@@ -1,0 +1,95 @@
+﻿@page
+@model Notifier.Pages.Rules.Time.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<head>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            background-image: url("https://i.imgur.com/CXYEAds.png");
+        }
+        a, p {
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        a {
+            color: blue;
+        }
+
+        a:hover {
+            color: indigo;
+            text-decoration: underline
+        }
+
+        .btnhome {
+            text-align: center;
+            padding: 10px;
+            width: 125px;
+            border: solid 1px;
+            border-radius: 5px;
+            border-color: black;
+            background-color: darkgreen;
+            color: white;
+            margin-top: 5px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+        }
+
+        input:hover {
+            color: black;
+            opacity: .75;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<h1>Create</h1>
+
+<h4>TimeRule</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="TimeRule.OwnerID" class="control-label"></label>
+                <input asp-for="TimeRule.OwnerID" class="form-control" />
+                <span asp-validation-for="TimeRule.OwnerID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TimeRule.BeforeAfterTime" class="control-label"></label>
+                <select asp-for="TimeRule.BeforeAfterTime" class="form-control"></select>
+                <span asp-validation-for="TimeRule.BeforeAfterTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TimeRule.TransactionTimeFilter" class="control-label"></label>
+                <input asp-for="TimeRule.TransactionTimeFilter" class="form-control" />
+                <span asp-validation-for="TimeRule.TransactionTimeFilter" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btnhome" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
