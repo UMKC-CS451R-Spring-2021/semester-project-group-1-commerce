@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Notifier.Data;
 
 namespace Notifier.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210503172504_NotificationType6")]
+    partial class NotificationType6
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -339,6 +341,41 @@ namespace Notifier.Data.Migrations
                     b.HasKey("NotificationID");
 
                     b.ToTable("Notification");
+                });
+
+            modelBuilder.Entity("Notifier.Models.NotificationRule", b =>
+                {
+                    b.Property<int>("RuleID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("DepositWithdrawlFilter")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("DescriptionFilter")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("LocationFilter")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("MoreLessEqualTrans")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("OwnerID")
+                        .HasColumnType("TEXT");
+
+                    b.Property<decimal>("TransAmountFilter")
+                        .HasColumnType("decimal(18, 2)");
+
+                    b.Property<DateTime>("TransactionDateFilter")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("TransactionTimeFilter")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("RuleID");
+
+                    b.ToTable("NotificationRule");
                 });
 
             modelBuilder.Entity("Notifier.Models.TimeRule", b =>

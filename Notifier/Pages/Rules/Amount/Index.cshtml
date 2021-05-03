@@ -96,6 +96,9 @@
     <thead>
         <tr>
             <th>
+                @Html.DisplayNameFor(model => model.AmountRule[0].DepoWith)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.AmountRule[0].GreaterLess)
             </th>
             <th>
@@ -107,6 +110,9 @@
     <tbody>
 @foreach (var item in Model.AmountRule) {
         <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DepoWith)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.GreaterLess)
             </td>
