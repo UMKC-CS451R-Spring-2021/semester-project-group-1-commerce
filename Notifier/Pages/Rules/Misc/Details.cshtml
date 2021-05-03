@@ -1,0 +1,44 @@
+﻿@page
+@model Notifier.Pages.Rules.Misc.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>MiscRule</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.MiscRule.OwnerID)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MiscRule.OwnerID)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.MiscRule.wantOverdraft)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MiscRule.wantOverdraft)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.MiscRule.wantAllDeposit)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MiscRule.wantAllDeposit)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.MiscRule.wantAllWithdraw)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MiscRule.wantAllWithdraw)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.MiscRule.MiscRuleID">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

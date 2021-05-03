@@ -286,6 +286,29 @@ namespace Notifier.Data.Migrations
                     b.ToTable("LocationRule");
                 });
 
+            modelBuilder.Entity("Notifier.Models.MiscRule", b =>
+                {
+                    b.Property<int>("MiscRuleID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("OwnerID")
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("wantAllDeposit")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("wantAllWithdraw")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("wantOverdraft")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("MiscRuleID");
+
+                    b.ToTable("MiscRule");
+                });
+
             modelBuilder.Entity("Notifier.Models.Notification", b =>
                 {
                     b.Property<int>("NotificationID")
@@ -302,6 +325,9 @@ namespace Notifier.Data.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Reason")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Type")
                         .HasColumnType("TEXT");
 
                     b.Property<int>("transactionID")

@@ -103,7 +103,7 @@ var timeTransactions = from t in Context.Transaction
 
                 if (isDuplicate == false)
                 {
-                    var newNotification = new Notification { OwnerID = FilteredList[i].OwnerID, IsRead = false, transactionID = FilteredList[i].TransactionId, Reason = ("Transaction from: " + FilteredList[i].Location), CreationDate = currentTime };
+                    var newNotification = new Notification { OwnerID = FilteredList[i].OwnerID, IsRead = false, transactionID = FilteredList[i].TransactionId, Reason = ("Transaction from: " + FilteredList[i].Location), CreationDate = currentTime, Type = "Location" };
                     Context.Notification.Add(newNotification);
                 }
             }
@@ -128,7 +128,7 @@ var timeTransactions = from t in Context.Transaction
 
                 if (isDuplicate == false)
                 {
-                    var newNotification = new Notification { OwnerID = DescriptionList[i].OwnerID, IsRead = false, transactionID = DescriptionList[i].TransactionId, Reason = ("Transaction of: " + DescriptionList[i].Description), CreationDate = currentTime };
+                    var newNotification = new Notification { OwnerID = DescriptionList[i].OwnerID, IsRead = false, transactionID = DescriptionList[i].TransactionId, Reason = ("Transaction of: " + DescriptionList[i].Description), CreationDate = currentTime, Type = "Description" };
                     Context.Notification.Add(newNotification);
                 }
             }
@@ -150,7 +150,7 @@ var timeTransactions = from t in Context.Transaction
 
                 if (isDuplicate == false)
                 {
-                    var newNotification = new Notification { OwnerID = AmountGreaterList[i].OwnerID, IsRead = false, transactionID = AmountGreaterList[i].TransactionId, Reason = ("Transaction above: " + AmountGreaterList[i].TransAmount), CreationDate = currentTime };
+                    var newNotification = new Notification { OwnerID = AmountGreaterList[i].OwnerID, IsRead = false, transactionID = AmountGreaterList[i].TransactionId, Reason = ("Transaction above: " + AmountGreaterList[i].TransAmount), CreationDate = currentTime, Type = "Amount" };
                     Context.Notification.Add(newNotification);
                 }
             }
@@ -169,7 +169,7 @@ var timeTransactions = from t in Context.Transaction
 
                 if (isDuplicate == false)
                 {
-                    var newNotification = new Notification { OwnerID = AmountLessList[i].OwnerID, IsRead = false, transactionID = AmountLessList[i].TransactionId, Reason = ("Transaction below: " + AmountLessList[i].TransAmount), CreationDate = currentTime };
+                    var newNotification = new Notification { OwnerID = AmountLessList[i].OwnerID, IsRead = false, transactionID = AmountLessList[i].TransactionId, Reason = ("Transaction below: " + AmountLessList[i].TransAmount), CreationDate = currentTime, Type = "Amount" };
                     Context.Notification.Add(newNotification);
                 }
             }
@@ -188,7 +188,7 @@ var timeTransactions = from t in Context.Transaction
 
                 if (isDuplicate == false)
                 {
-                    var newNotification = new Notification { OwnerID = AmountEqualList[i].OwnerID, IsRead = false, transactionID = AmountEqualList[i].TransactionId, Reason = ("Transaction of exactly: " + AmountEqualList[i].TransAmount), CreationDate = currentTime };
+                    var newNotification = new Notification { OwnerID = AmountEqualList[i].OwnerID, IsRead = false, transactionID = AmountEqualList[i].TransactionId, Reason = ("Transaction of exactly: " + AmountEqualList[i].TransAmount), CreationDate = currentTime, Type = "Amount" };
                     Context.Notification.Add(newNotification);
                 }
             }
