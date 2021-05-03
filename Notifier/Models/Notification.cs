@@ -12,6 +12,7 @@ namespace Notifier.Models
         [Key]
         public int NotificationID { get; set;}
         public string OwnerID { get; set; }
+        public string Type { get; set; }
         public string Reason {get; set;}
         [Display(Name = "Date Notified")]
         public DateTime CreationDate { get; set; }

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Threading.Tasks;
 using System.Linq;
+using System;
 
 namespace Notifier.PagesTransactions
 {
@@ -38,6 +39,7 @@ namespace Notifier.PagesTransactions
                 return Page();
             }
 
+            DateTime currentTime = DateTime.Now;
             var UserID = UserManager.GetUserId(User);
             Transaction.OwnerID = UserID;
             var balanceAmt = Transaction.TransAmount;
@@ -46,18 +48,16 @@ namespace Notifier.PagesTransactions
                              where n.OwnerID == UserID
                              select n;
 
+            var MiscDup =    from n in Context.MiscRule
+                             where n.OwnerID == UserID
+                             select n;
+
             var UserDup = BalanceDup.ToList();
+            var RuleDup = MiscDup.ToList();
+
+            var ruleCheckMisc = RuleDup[0];
             var BalanceToPutIn = UserDup[0].BalanceAmount;
             var BalanceIndex = UserDup[0].BalanceID;
-
-            for (int i = 0; i < UserDup.Count(); i++)
-            {
-                if (UserDup[i].OwnerID == UserID)
-                {
-                    BalanceToPutIn = UserDup[i].BalanceAmount;
-                    BalanceIndex = UserDup[i].BalanceID;
-                }
-            }
             
 
             var isAuthorized = await AuthorizationService.AuthorizeAsync(
@@ -86,16 +86,31 @@ namespace Notifier.PagesTransactions
                         marker.Balance = BalanceToPutIn - 35;
                     }
                     marker.Description = marker.Description + " (OVERDRAWN)";
+                    if (ruleCheckMisc.wantOverdraft == true)
+                    {
+                    var newNotification = new Notification { OwnerID = UserID, IsRead = false, transactionID = marker.TransactionId, Reason = "Account Overdrawn", CreationDate = currentTime, Type = "Overdraw" };
+                    Context.Notification.Add(newNotification);
+                    }
                 }
                 else
                 {
                     marker.Balance = BalanceToPutIn - balanceAmt;
+                    if (ruleCheckMisc.wantAllWithdraw == true)
+                    {
+                        var newNotification = new Notification { OwnerID = UserID, IsRead = false, transactionID = marker.TransactionId, Reason = "New Withdraw", CreationDate = currentTime, Type = "Withdraw" };
+                        Context.Notification.Add(newNotification);
+                    }
                 }
             }
 
             else if (marker.DepositWithdrawl == (DepoType)1)
             {
                 marker.Balance = BalanceToPutIn + balanceAmt;
+                if (ruleCheckMisc.wantAllDeposit == true)
+                {
+                    var newNotification = new Notification { OwnerID = UserID, IsRead = false, transactionID = marker.TransactionId, Reason = "New Deposit", CreationDate = currentTime, Type = "Deposit" };
+                    Context.Notification.Add(newNotification);
+                }
             }
 
             var balanceToSave = await Context.BalanceModel.FindAsync(BalanceIndex);

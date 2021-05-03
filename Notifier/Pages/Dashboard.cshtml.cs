@@ -52,14 +52,8 @@ namespace Notifier.Pages
 
             var UserDup = BalanceDup.ToList();
 
-            for (int i = 0; i < UserDup.Count(); i++)
-            {
-                if (UserDup[i].OwnerID == UserID)
-                {
-                    MyBalance = UserDup[i].BalanceAmount;
-                    MyName = UserDup[i].OwnerName;
-                }
-            }
+               MyBalance = UserDup[0].BalanceAmount;
+               MyName = UserDup[0].OwnerName;
 
             var Transactions = from c in Context.Transaction
                                where c.OwnerID == UserID
