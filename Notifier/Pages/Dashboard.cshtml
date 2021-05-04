@@ -153,7 +153,7 @@
                                         @Html.DisplayNameFor(model => model.Transaction[0].DepositWithdrawl)
                                     </th>
                                     <th>
-                                        @Html.DisplayNameFor(model => model.Transaction[0].TransAmount)
+                                        Amount
                                     </th>
                                 </tr>
                             </thead>
@@ -171,7 +171,7 @@
                                             @Html.DisplayFor(modelItem => item.DepositWithdrawl)
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.TransAmount)
+                                            $@Html.DisplayFor(modelItem => item.TransAmount)
                                         </td>
                                     </tr>
                                 }
@@ -192,7 +192,7 @@
                         <h4 class="mb-0 title text-center">Notifications</h4>
                     </div>
                     <div class="canvas-wrapper">
-                        <canvas style="display: block; height: 382px; width: 705px;" height="500" width="1410"></canvas>
+                        <canvas style="display: block; height: 359px; width: 705px;" height="500" width="1410"></canvas>
                     </div>
                     <div class="bottom">
                         <a asp-page="/Notifications/Index"><input class="btnhome text-center" value="Click To View Notifications" /></a>
