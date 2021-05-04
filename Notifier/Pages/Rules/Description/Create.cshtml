@@ -49,11 +49,19 @@
             font-size: 14px;
         }
 
+<<<<<<< HEAD
+            .btnhome:hover {
+                color: black;
+                background-color: green;
+                cursor: pointer;
+            }
+=======
         .btnhome:hover {
             color: black;
             background-color:green;
             cursor: pointer;
         }
+>>>>>>> main
     </style>
 </head>
 
@@ -65,11 +73,6 @@
     <div class="col-md-4">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="DescriptionRule.OwnerID" class="control-label"></label>
-                <input asp-for="DescriptionRule.OwnerID" class="form-control" />
-                <span asp-validation-for="DescriptionRule.OwnerID" class="text-danger"></span>
-            </div>
             <div class="form-group">
                 <label asp-for="DescriptionRule.descriptionNotification" class="control-label"></label>
                 <input asp-for="DescriptionRule.descriptionNotification" class="form-control" />

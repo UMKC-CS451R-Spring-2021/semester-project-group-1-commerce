@@ -117,8 +117,8 @@
                 @Html.DisplayFor(modelItem => item.GreaterLess)
             </td>
             <td>
-                $@Html.DisplayFor(modelItem => item.amountNotification)
-            </td>
+                <p style="text-align:right;">$@Html.DisplayFor(modelItem => item.amountNotification)</p>
+</td>
             <td>
                 <a class="details" asp-page="./Edit" asp-route-id="@item.AmountRuleID">Edit</a> |
                 <a class="details" asp-page="./Details" asp-route-id="@item.AmountRuleID">Details</a> |

@@ -2,7 +2,7 @@
 @model DashboardModel
 @{ ViewData["Title"] = "Dashboard";
 }
-
+@using System.Globalization;
 <head>
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -120,7 +120,7 @@
             <div class="content">
                 <div class="head">
                     <h4 class="mb-0 text-center">Balance</h4>
-                    <h4 class="mb-0 text-center bal"> $@Model.MyBalance </h4>
+                    <h4 class="mb-0 text-center bal"> @Model.MyBalance.ToString("C", CultureInfo.CurrentCulture) </h4>
                 </div>
                 <div class="ui hidden divider"></div>
             </div>
@@ -135,7 +135,7 @@
             <div class="card">
                 <div class="content">
                     <div class="head">
-                        <h4 class="mb-0 title text-center">Transactions</h4>
+                        <h4 class="mb-0 title text-center">Latest Transactions</h4>
                     </div>
                     <div class="canvas-wrapper">
                         <table class="table">
@@ -171,7 +171,7 @@
                                             @Html.DisplayFor(modelItem => item.DepositWithdrawl)
                                         </td>
                                         <td>
-                                            $@Html.DisplayFor(modelItem => item.TransAmount)
+                                            <p style="text-align:right;">$@Html.DisplayFor(modelItem => item.TransAmount)</p>
                                         </td>
                                     </tr>
                                 }
@@ -190,12 +190,64 @@
                 <div class="content">
                     <div class="head">
                         <h4 class="mb-0 title text-center">Notifications</h4>
+                        <h4 class="mb-0 title text-center">You Have @Model.UnreadNotifications Unread Notifications</h4>
                     </div>
                     <div class="canvas-wrapper">
-                        <canvas style="display: block; height: 359px; width: 705px;" height="500" width="1410"></canvas>
+                        @if (Model.RuleCount.Count != 0)
+                        {
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            Notification Rule
+                                        </th>
+                                        <th>
+                                            Times Triggered This Month <a class="details" asp-page="/Notifications/MonthIndex">(List)</a>
+                                        </th>
+                                        <th>
+                                            Times Triggerd This Year <a class="details" asp-page="/Notifications/YearIndex">(List)</a>
+                                        </th>
+                                        <th>
+                                            Currently Unread
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (Model.RuleCount.Count != 0)
+                                    {
+                                        @foreach (var item in Model.RuleCount)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.RuleType)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.TriggeredThisMonth)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.TriggeredThisYear)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Unread)
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+                        }
+                        else
+                        {
+                            <canvas style="display: block; height: 359px; width: 705px;" height="500" width="1410"></canvas>
+                        }
+                    </div>
+                    <div class="canvas-wrapper">
                     </div>
                     <div class="bottom">
                         <a asp-page="/Notifications/Index"><input class="btnhome text-center" value="Click To View Notifications" /></a>
+                        <form method="post" asp-page-handler="Export">
+                            <button class="btnhome text-center">Export all Notifications</button>
+                        </form>
                     </div>
                     <div class="ui hidden divider"></div>
                 </div>
