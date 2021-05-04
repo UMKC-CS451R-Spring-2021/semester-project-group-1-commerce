@@ -87,7 +87,7 @@
     </style>
 </head>
 
-<h1>Index</h1>
+<h1>Amount Rules</h1>
 
 <p>
     <a class="nav-link white" asp-page="Create"><input class="btnhome" value="Create New" /></a>
@@ -95,6 +95,9 @@
 <table class="table">
     <thead>
         <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AmountRule[0].DepoWith)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.AmountRule[0].GreaterLess)
             </th>
@@ -107,6 +110,9 @@
     <tbody>
 @foreach (var item in Model.AmountRule) {
         <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DepoWith)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.GreaterLess)
             </td>

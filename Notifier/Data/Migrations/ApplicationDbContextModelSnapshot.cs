@@ -218,13 +218,16 @@ namespace Notifier.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<int>("DepoWith")
+                        .HasColumnType("INTEGER");
+
                     b.Property<int>("GreaterLess")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("OwnerID")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("amountNotification")
+                    b.Property<decimal>("amountNotification")
                         .HasColumnType("decimal(18, 2)");
 
                     b.HasKey("AmountRuleID");
@@ -286,6 +289,29 @@ namespace Notifier.Data.Migrations
                     b.ToTable("LocationRule");
                 });
 
+            modelBuilder.Entity("Notifier.Models.MiscRule", b =>
+                {
+                    b.Property<int>("MiscRuleID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("OwnerID")
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("wantAllDeposit")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("wantAllWithdraw")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("wantOverdraft")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("MiscRuleID");
+
+                    b.ToTable("MiscRule");
+                });
+
             modelBuilder.Entity("Notifier.Models.Notification", b =>
                 {
                     b.Property<int>("NotificationID")
@@ -304,6 +330,9 @@ namespace Notifier.Data.Migrations
                     b.Property<string>("Reason")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("Type")
+                        .HasColumnType("TEXT");
+
                     b.Property<int>("transactionID")
                         .HasColumnType("INTEGER");
 
@@ -312,60 +341,19 @@ namespace Notifier.Data.Migrations
                     b.ToTable("Notification");
                 });
 
-            modelBuilder.Entity("Notifier.Models.NotificationRule", b =>
-                {
-                    b.Property<int>("RuleID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("BeforeAfterDate")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("BeforeAfterTime")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("DepositWithdrawlFilter")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("DescriptionFilter")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("LocationFilter")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("MoreLessEqualTrans")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("OwnerID")
-                        .HasColumnType("TEXT");
-
-                    b.Property<decimal>("TransAmountFilter")
-                        .HasColumnType("decimal(18, 2)");
-
-                    b.Property<DateTime>("TransactionDateFilter")
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime>("TransactionTimeFilter")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("RuleID");
-
-                    b.ToTable("NotificationRule");
-                });
-
             modelBuilder.Entity("Notifier.Models.TimeRule", b =>
                 {
                     b.Property<int>("TimeRuleID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("BeforeAfterTime")
-                        .HasColumnType("INTEGER");
-
                     b.Property<string>("OwnerID")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("TransactionTimeFilter")
+                    b.Property<DateTime>("TransactionTimeFilterFrom")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("TransactionTimeFilterUntil")
                         .HasColumnType("TEXT");
 
                     b.HasKey("TimeRuleID");

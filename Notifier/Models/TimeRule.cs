@@ -15,17 +15,12 @@ namespace Notifier.Models
         // user ID from AspNetUser table.
         public string OwnerID { get; set; }
 
-        [Display(Name = "Timer Filter")]
-        public TimeShare BeforeAfterTime { get; set; }
-
-        [Display(Name = "Time")]
+        [Display(Name = "Starting at")]
         [DataType(DataType.Time)]
-        public DateTime TransactionTimeFilter { get; set; }
-    }
-    public enum TimeShare
-    {
-        Before = 1,
-        After = 2,
-        Same = 3
+        public DateTime TransactionTimeFilterFrom { get; set; }
+
+        [Display(Name = "Ending at")]
+        [DataType(DataType.Time)]
+        public DateTime TransactionTimeFilterUntil { get; set; }
     }
 }

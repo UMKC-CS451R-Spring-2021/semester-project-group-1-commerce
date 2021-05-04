@@ -14,10 +14,17 @@ namespace Notifier.Models
 
         // user ID from AspNetUser table.
         public string OwnerID { get; set; }
+
+        [Display(Name = "Deposit/Withdraw")]
+        public DepoType DepoWith { get; set; }
+
+        [Display(Name = "Greater/Lesser/Equal")]
         public NumComparator GreaterLess { get; set; }
 
+        [Display(Name = "Amount")]
+
         [Column(TypeName = "decimal(18, 2)")]
-        public int amountNotification { get; set; }
+        public decimal amountNotification { get; set; }
     }
     public enum NumComparator
     {

@@ -17,6 +17,7 @@
         body {
             background-image: url("https://i.imgur.com/CXYEAds.png");
         }
+
         a, p {
             font-family: 'Open Sans', sans-serif;
         }
@@ -44,22 +45,16 @@
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.TimeRule.OwnerID)
+            @Html.DisplayNameFor(model => model.TimeRule.TransactionTimeFilterFrom)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.TimeRule.OwnerID)
+            @Html.DisplayFor(model => model.TimeRule.TransactionTimeFilterFrom)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.TimeRule.BeforeAfterTime)
+            @Html.DisplayNameFor(model => model.TimeRule.TransactionTimeFilterUntil)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.TimeRule.BeforeAfterTime)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.TimeRule.TransactionTimeFilter)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.TimeRule.TransactionTimeFilter)
+            @Html.DisplayFor(model => model.TimeRule.TransactionTimeFilterUntil)
         </dd>
     </dl>
     

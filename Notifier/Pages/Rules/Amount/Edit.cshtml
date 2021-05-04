@@ -37,7 +37,7 @@
 
         input:hover {
             color: black;
-            opacity: .75;
+            background-color: green;
             cursor: pointer;
         }
 
@@ -65,14 +65,15 @@
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="AmountRule.AmountRuleID" />
+            <input type="hidden" asp-for="AmountRule.OwnerID" />
             <div class="form-group">
-                <label asp-for="AmountRule.OwnerID" class="control-label"></label>
-                <input asp-for="AmountRule.OwnerID" class="form-control" />
-                <span asp-validation-for="AmountRule.OwnerID" class="text-danger"></span>
+                <label asp-for="AmountRule.DepoWith" class="control-label"></label>
+                <select asp-for="AmountRule.DepoWith" asp-items="Html.GetEnumSelectList<DepoType>()" class="form-control"></select>
+                <span asp-validation-for="AmountRule.DepoWith" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="AmountRule.GreaterLess" class="control-label"></label>
-                <select asp-for="AmountRule.GreaterLess" class="form-control"></select>
+                <select asp-for="AmountRule.GreaterLess" asp-items="Html.GetEnumSelectList<NumComparator>()" class="form-control"></select>
                 <span asp-validation-for="AmountRule.GreaterLess" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -80,7 +81,7 @@
                 <input asp-for="AmountRule.amountNotification" class="form-control" />
                 <span asp-validation-for="AmountRule.amountNotification" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group back">
                 <input type="submit" value="Save" class="btnhome" />
             </div>
         </form>

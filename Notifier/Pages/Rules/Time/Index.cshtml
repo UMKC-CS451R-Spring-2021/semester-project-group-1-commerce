@@ -26,36 +26,6 @@
             font-family: 'Poppins', sans-serif;
         }
 
-        a {
-            color: blue;
-        }
-
-            a:hover {
-                color: indigo;
-                text-decoration: underline;
-            }
-
-
-        input:hover {
-            color: black;
-            opacity: .75;
-            cursor: pointer;
-        }
-
-        .btnhome {
-            text-align: center;
-            padding: 10px;
-            width: 125px;
-            border: solid 1px;
-            border-radius: 5px;
-            border-color: black;
-            background-color: darkgreen;
-            color: white;
-            margin-top: 5px;
-            font-family: 'Poppins', sans-serif;
-            font-size: 14px;
-        }
-
         table {
             background-color: white;
         }
@@ -76,6 +46,7 @@
             color: white;
         }
 
+
         .details {
             color: #FFB300;
             text-decoration: underline;
@@ -84,10 +55,39 @@
             .details:hover {
                 color: indigo;
             }
+
+        .btnhome {
+            text-align: center;
+            padding: 10px;
+            width: 125px;
+            border: solid 1px;
+            border-radius: 5px;
+            border-color: black;
+            background-color: darkgreen;
+            color: white;
+            margin-top: 5px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+        }
+
+        input:hover {
+            color: black;
+            opacity: .75;
+            cursor: pointer;
+        }
+        a {
+            color: blue;
+        }
+
+        a:hover {
+            color: indigo;
+            text-decoration: underline;
+        }
     </style>
+
 </head>
 
-<h1>Index</h1>
+<h1>Time Rules</h1>
 
 <p>
     <a class="nav-link white" asp-page="Create"><input class="btnhome" value="Create New" /></a>
@@ -96,13 +96,10 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.TimeRule[0].OwnerID)
+                @Html.DisplayNameFor(model => model.TimeRule[0].TransactionTimeFilterFrom)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TimeRule[0].BeforeAfterTime)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TimeRule[0].TransactionTimeFilter)
+                @Html.DisplayNameFor(model => model.TimeRule[0].TransactionTimeFilterUntil)
             </th>
             <th></th>
         </tr>
@@ -112,13 +109,10 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.OwnerID)
+                    @Html.DisplayFor(modelItem => item.TransactionTimeFilterFrom)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.BeforeAfterTime)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.TransactionTimeFilter)
+                    @Html.DisplayFor(modelItem => item.TransactionTimeFilterUntil)
                 </td>
                 <td>
                     <a class="details" asp-page="./Edit" asp-route-id="@item.TimeRuleID">Edit</a> |

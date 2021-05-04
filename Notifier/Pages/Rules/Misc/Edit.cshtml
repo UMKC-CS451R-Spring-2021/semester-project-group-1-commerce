@@ -1,0 +1,98 @@
+﻿@page
+@model Notifier.Pages.Rules.Misc.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<head>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+    <style>
+        a, p {
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-image: url("https://i.imgur.com/CXYEAds.png");
+        }
+
+        a {
+            color: blue;
+        }
+
+            a:hover {
+                color: indigo;
+                text-decoration: underline;
+            }
+
+        input:hover {
+            color: black;
+            background-color: green;
+            cursor: pointer;
+        }
+
+        .btnhome {
+            text-align: center;
+            padding: 10px;
+            width: 125px;
+            border: solid 1px;
+            border-radius: 5px;
+            border-color: black;
+            background-color: darkgreen;
+            color: white;
+            margin-top: 5px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<h1>Configure</h1>
+
+<h4>Miscellaneous Rules</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="MiscRule.MiscRuleID" />
+            <input type="hidden" asp-for="MiscRule.OwnerID" />
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="MiscRule.wantOverdraft" /> @Html.DisplayNameFor(model => model.MiscRule.wantOverdraft)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="MiscRule.wantAllDeposit" /> @Html.DisplayNameFor(model => model.MiscRule.wantAllDeposit)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="MiscRule.wantAllWithdraw" /> @Html.DisplayNameFor(model => model.MiscRule.wantAllWithdraw)
+                </label>
+            </div>
+            <div class="form-group back">
+                <input type="submit" value="Save" class="btnhome" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="/Rules/Index">Back to Rules</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

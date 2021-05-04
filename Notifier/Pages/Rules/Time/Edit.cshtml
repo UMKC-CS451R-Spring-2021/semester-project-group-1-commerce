@@ -14,9 +14,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 
     <style>
-        body {
-            background-image: url("https://i.imgur.com/CXYEAds.png");
-        }
         a, p {
             font-family: 'Open Sans', sans-serif;
         }
@@ -25,18 +22,22 @@
             font-family: 'Poppins', sans-serif;
         }
 
+        body {
+            background-image: url("https://i.imgur.com/CXYEAds.png");
+        }
+
         a {
             color: blue;
         }
 
-        a:hover {
-            color: indigo;
-            text-decoration: underline;
-        }
+            a:hover {
+                color: indigo;
+                text-decoration: underline;
+            }
 
         input:hover {
             color: black;
-            opacity: .75;
+            background-color: green;
             cursor: pointer;
         }
 
@@ -53,7 +54,6 @@
             font-family: 'Poppins', sans-serif;
             font-size: 14px;
         }
-
     </style>
 </head>
 
@@ -66,22 +66,18 @@
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="TimeRule.TimeRuleID" />
+            <input type="hidden" asp-for="TimeRule.OwnerID" />
             <div class="form-group">
-                <label asp-for="TimeRule.OwnerID" class="control-label"></label>
-                <input asp-for="TimeRule.OwnerID" class="form-control" />
-                <span asp-validation-for="TimeRule.OwnerID" class="text-danger"></span>
+                <label asp-for="TimeRule.TransactionTimeFilterFrom" class="control-label"></label>
+                <input asp-for="TimeRule.TransactionTimeFilterFrom" class="form-control" />
+                <span asp-validation-for="TimeRule.TransactionTimeFilterFrom" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="TimeRule.BeforeAfterTime" class="control-label"></label>
-                <select asp-for="TimeRule.BeforeAfterTime" class="form-control"></select>
-                <span asp-validation-for="TimeRule.BeforeAfterTime" class="text-danger"></span>
+                <label asp-for="TimeRule.TransactionTimeFilterUntil" class="control-label"></label>
+                <input asp-for="TimeRule.TransactionTimeFilterUntil" class="form-control" />
+                <span asp-validation-for="TimeRule.TransactionTimeFilterUntil" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="TimeRule.TransactionTimeFilter" class="control-label"></label>
-                <input asp-for="TimeRule.TransactionTimeFilter" class="form-control" />
-                <span asp-validation-for="TimeRule.TransactionTimeFilter" class="text-danger"></span>
-            </div>
-            <div class="form-group">
+            <div class="form-group back">
                 <input type="submit" value="Save" class="btnhome" />
             </div>
         </form>
@@ -89,7 +85,7 @@
 </div>
 
 <div>
-    <a asp-page="./Index">Back to List</a>
+    <a asp-page="./Index">Back to Rules</a>
 </div>
 
 @section Scripts {

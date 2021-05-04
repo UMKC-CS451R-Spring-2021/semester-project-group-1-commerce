@@ -16,6 +16,16 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="BalanceModel.BalanceID" />
             <div class="form-group">
+                <label asp-for="BalanceModel.BalanceAmount" class="control-label"></label>
+                <input asp-for="BalanceModel.BalanceAmount" class="form-control" />
+                <span asp-validation-for="BalanceModel.BalanceAmount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BalanceModel.OwnerName" class="control-label"></label>
+                <input asp-for="BalanceModel.OwnerName" class="form-control" />
+                <span asp-validation-for="BalanceModel.OwnerName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>
