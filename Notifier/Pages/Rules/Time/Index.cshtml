@@ -6,10 +6,91 @@
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<head>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            background-image: url("https://i.imgur.com/CXYEAds.png");
+        }
+
+        a, p {
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        table {
+            background-color: white;
+        }
+
+        th {
+            background-color: white;
+            color: black;
+        }
+
+        tr:nth-child(odd) {
+            background-color: #006747;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #006747;
+            opacity: .8;
+            color: white;
+        }
+
+
+        .details {
+            color: #FFB300;
+            text-decoration: underline;
+        }
+
+            .details:hover {
+                color: indigo;
+            }
+
+        .btnhome {
+            text-align: center;
+            padding: 10px;
+            width: 125px;
+            border: solid 1px;
+            border-radius: 5px;
+            border-color: black;
+            background-color: darkgreen;
+            color: white;
+            margin-top: 5px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+        }
+
+        input:hover {
+            color: black;
+            opacity: .75;
+            cursor: pointer;
+        }
+        a {
+            color: blue;
+        }
+
+        a:hover {
+            color: indigo;
+            text-decoration: underline;
+        }
+    </style>
+
+</head>
+
+<h1>Time Rules</h1>
 
 <p>
-    <a asp-page="Create">Create New</a>
+    <a class="nav-link white" asp-page="Create"><input class="btnhome" value="Create New" /></a>
 </p>
 <table class="table">
     <thead>
@@ -24,20 +105,22 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.TimeRule) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.TransactionTimeFilterFrom)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TransactionTimeFilterUntil)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.TimeRuleID">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.TimeRuleID">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.TimeRuleID">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.TimeRule)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TransactionTimeFilterFrom)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TransactionTimeFilterUntil)
+                </td>
+                <td>
+                    <a class="details" asp-page="./Edit" asp-route-id="@item.TimeRuleID">Edit</a> |
+                    <a class="details" asp-page="./Details" asp-route-id="@item.TimeRuleID">Details</a> |
+                    <a class="details" asp-page="./Delete" asp-route-id="@item.TimeRuleID">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+<a asp-page="/Rules/Index">Back to Rules</a>

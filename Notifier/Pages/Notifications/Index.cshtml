@@ -49,6 +49,10 @@
             cursor: pointer;
         }
 
+        table{
+            background-color: white;
+        }
+
         th {
             background-color: white;
             color: black;
@@ -72,12 +76,15 @@
         .details:hover{
             color: indigo;
         }
+        .mark{
+            margin-bottom:2px;
+        }
     </style>
 </head>
 <h1>Notifications</h1>
 <a class="nav-link white" asp-page="/Rules/Index"><input class="btnhome" value="Configure Notification Rules" /></a>
 <form method="post" action="">
-    <button type="submit" asp-page-handler="Flush"> Mark all as Read </button>
+    <button class="mark" type="submit" asp-page-handler="Flush"> Mark all as Read </button>
 </form>
 <table class="table">
     <thead>

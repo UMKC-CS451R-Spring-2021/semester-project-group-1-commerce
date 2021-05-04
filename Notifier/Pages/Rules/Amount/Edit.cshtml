@@ -37,7 +37,7 @@
 
         input:hover {
             color: black;
-            opacity: .75;
+            background-color: green;
             cursor: pointer;
         }
 
@@ -81,7 +81,7 @@
                 <input asp-for="AmountRule.amountNotification" class="form-control" />
                 <span asp-validation-for="AmountRule.amountNotification" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group back">
                 <input type="submit" value="Save" class="btnhome" />
             </div>
         </form>
