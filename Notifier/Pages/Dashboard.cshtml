@@ -193,46 +193,53 @@
                         <h4 class="mb-0 title text-center">You Have @Model.UnreadNotifications Unread Notifications</h4>
                     </div>
                     <div class="canvas-wrapper">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>
-                                        Notification Rule
-                                    </th>
-                                    <th>
-                                        Times Triggered This Month <a class="details" asp-page="/Notifications/MonthIndex">(List)</a>
-                                    </th>
-                                    <th>
-                                        Times Triggerd This Year <a class="details" asp-page="/Notifications/YearIndex">(List)</a>
-                                    </th>
-                                    <th>
-                                        Currently Unread
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @if (Model.RuleCount.Count != 0)
-                                {
-                                    @foreach (var item in Model.RuleCount)
+                        @if (Model.RuleCount.Count != 0)
+                        {
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            Notification Rule
+                                        </th>
+                                        <th>
+                                            Times Triggered This Month <a class="details" asp-page="/Notifications/MonthIndex">(List)</a>
+                                        </th>
+                                        <th>
+                                            Times Triggerd This Year <a class="details" asp-page="/Notifications/YearIndex">(List)</a>
+                                        </th>
+                                        <th>
+                                            Currently Unread
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (Model.RuleCount.Count != 0)
                                     {
-                                        <tr>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.RuleType)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.TriggeredThisMonth)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.TriggeredThisYear)
-                                            </td>
-                                            <td>
-                                                @Html.DisplayFor(modelItem => item.Unread)
-                                            </td>
-                                        </tr>
+                                        @foreach (var item in Model.RuleCount)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.RuleType)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.TriggeredThisMonth)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.TriggeredThisYear)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Unread)
+                                                </td>
+                                            </tr>
+                                        }
                                     }
-                                }
-                            </tbody>
-                        </table>
+                                </tbody>
+                            </table>
+                        }
+                        else
+                        {
+                            <canvas style="display: block; height: 359px; width: 705px;" height="500" width="1410"></canvas>
+                        }
                     </div>
                     <div class="canvas-wrapper">
                     </div>
