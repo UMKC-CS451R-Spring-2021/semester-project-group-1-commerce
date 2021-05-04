@@ -1,5 +1,6 @@
 @page
 @model Notifier.PagesTransactions.IndexModel
+@using System.Globalization;
 
 
     <head>
@@ -131,13 +132,13 @@
                 @Html.DisplayFor(modelItem => item.Location)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Balance)
+                <p style="text-align:right;">$@Html.DisplayFor(modelItem => item.Balance)</p>
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DepositWithdrawl)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.TransAmount)
+                <p style="text-align:right;">$@Html.DisplayFor(modelItem => item.TransAmount)</p>
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Description)

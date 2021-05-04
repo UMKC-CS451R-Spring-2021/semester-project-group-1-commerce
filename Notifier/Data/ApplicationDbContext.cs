@@ -21,5 +21,6 @@ namespace Notifier.Data
         public DbSet<Notifier.Models.MiscRule> MiscRule { get; set; }
         public DbSet<Notifier.Models.Notification> Notification { get; set; }
         public DbSet<Notifier.Models.BalanceModel> BalanceModel { get; set; }
+        public DbSet<Notifier.Models.TempRuleCount> TempRuleCount { get; set; }
     }
 }

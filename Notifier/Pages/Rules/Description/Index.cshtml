@@ -94,10 +94,7 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.DescriptionRule[0].OwnerID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DescriptionRule[0].descriptionNotification)
+                Description
             </th>
             <th></th>
         </tr>
@@ -106,9 +103,6 @@
         @foreach (var item in Model.DescriptionRule)
         {
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.OwnerID)
-                </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.descriptionNotification)
                 </td>

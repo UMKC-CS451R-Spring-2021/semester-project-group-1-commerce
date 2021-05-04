@@ -21,16 +21,6 @@ namespace Notifier.Pages.Notifications
         {
         }
 
-        public IList<Transaction> Transaction { get; set; }
-
-        public IList<Transaction> FilteredList { get; set; }
-
-        public IList<Transaction> DescriptionList { get; set; }
-
-        public IList<Transaction> AmountGreaterList { get; set; }
-        public IList<Transaction> AmountLessList { get; set; }
-        public IList<Transaction> AmountEqualList { get; set; }
-
         public IList<Notification> Notification { get;set; }
 
         public async Task OnGetAsync()
