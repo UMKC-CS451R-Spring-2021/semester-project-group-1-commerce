@@ -1,0 +1,124 @@
+@page
+@model Notifier.PagesTransactions.IndexModel
+
+
+    <head>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+        <style>
+
+        a, p {
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        table{
+            background-color: white;
+        }
+
+        th{
+            background-color: white;
+            color: black;
+        }
+
+        tr:nth-child(odd) {
+            background-color: #006747;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #006747;
+            opacity: .8;
+            color: white;
+        }
+
+        .details {
+            color: #FFB300;
+            text-decoration: underline;
+        }
+
+        .details:hover{
+            color: black;
+        }
+
+
+        </style>
+
+    </head>
+
+@{
+    ViewData["Title"] = "Transaction History";
+}
+
+<h1>Transaction History</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.DateSort">
+                    @Html.DisplayNameFor(model => model.Transaction[0].TransactionDate)
+                    </a>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Transaction[0].TransactionTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Transaction[0].Location)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Transaction[0].Balance)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Transaction[0].DepositWithdrawl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Transaction[0].TransAmount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Transaction[0].Description)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Transaction) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TransactionDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TransactionTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Location)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Balance)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DepositWithdrawl)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TransAmount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                <a class="details" asp-page="./Details" asp-route-id="@item.TransactionId">Details</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

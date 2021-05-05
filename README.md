@@ -3,3 +3,11 @@
 ## Members
 Ozzie Loewen
 
+Sushant Acharya
+
+Thomas Starr-Timberlake
+
+Kole Keeney
+
+
+Justin Thomas

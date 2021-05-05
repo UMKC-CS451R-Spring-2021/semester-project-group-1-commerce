@@ -1,0 +1,64 @@
+@page
+@model Notifier.PagesTransactions.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Transaction</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Transaction.TransactionDate" class="control-label"></label>
+                <input asp-for="Transaction.TransactionDate" class="form-control" />
+                <span asp-validation-for="Transaction.TransactionDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Transaction.TransactionTime" class="control-label"></label>
+                <input asp-for="Transaction.TransactionTime" class="form-control" />
+                <span asp-validation-for="Transaction.TransactionTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Transaction.Location" class="control-label"></label>
+                <input asp-for="Transaction.Location" class="form-control" />
+                <span asp-validation-for="Transaction.Location" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Transaction.Balance" class="control-label"></label>
+                <input asp-for="Transaction.Balance" class="form-control" />
+                <span asp-validation-for="Transaction.Balance" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Transaction.DepositWithdrawl" class="control-label"></label>
+                <select asp-for="Transaction.DepositWithdrawl" asp-items="Html.GetEnumSelectList<DepoType>()" class="form-control"></select>
+                <span asp-validation-for="Transaction.DepositWithdrawl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Transaction.TransAmount" class="control-label"></label>
+                <input asp-for="Transaction.TransAmount" class="form-control" />
+                <span asp-validation-for="Transaction.TransAmount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Transaction.Description" class="control-label"></label>
+                <input asp-for="Transaction.Description" class="form-control" />
+                <span asp-validation-for="Transaction.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
