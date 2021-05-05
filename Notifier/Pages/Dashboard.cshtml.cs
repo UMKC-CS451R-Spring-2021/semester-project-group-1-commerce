@@ -96,6 +96,7 @@ namespace Notifier.Pages
                 Transactions, pageIndex ?? 1, pageSize);
         }
 
+
         public void GetUnread()
         {
             var UserID = UserManager.GetUserId(User);

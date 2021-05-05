@@ -48,20 +48,16 @@
             font-family: 'Poppins', sans-serif;
             font-size: 14px;
         }
-
-<<<<<<< HEAD
             .btnhome:hover {
                 color: black;
                 background-color: green;
                 cursor: pointer;
             }
-=======
         .btnhome:hover {
             color: black;
             background-color:green;
             cursor: pointer;
         }
->>>>>>> main
     </style>
 </head>
 
@@ -74,7 +70,7 @@
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="DescriptionRule.descriptionNotification" class="control-label"></label>
+                <label asp-for="DescriptionRule.descriptionNotification" class="control-label">Description</label>
                 <input asp-for="DescriptionRule.descriptionNotification" class="form-control" />
                 <span asp-validation-for="DescriptionRule.descriptionNotification" class="text-danger"></span>
             </div>
