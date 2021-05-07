@@ -36,6 +36,7 @@ namespace Notifier.Pages.Notifications
                                       where n.CreationDate > lastMonth && n.OwnerID == currentUserId
                                       select n;
 
+            UnreadNotifications = UnreadNotifications.OrderByDescending(s => s.CreationDate);
             Notification = await UnreadNotifications.ToListAsync();
         }
         public async Task<IActionResult> OnPostExportAsync()

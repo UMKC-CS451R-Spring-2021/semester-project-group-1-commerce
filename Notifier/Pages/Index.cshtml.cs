@@ -40,7 +40,7 @@ namespace Notifier.Pages
                 {
                     return RedirectToPage("/Balance/Create");
                 }
-                return Page();
+                return RedirectToPage("/Dashboard");
             }
             return Page();
         }
