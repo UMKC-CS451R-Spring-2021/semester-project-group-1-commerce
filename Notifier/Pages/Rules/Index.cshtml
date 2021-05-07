@@ -71,7 +71,7 @@
         .btnhome {
             text-align:center;
             padding: 10px;
-            width: 225px;
+            width: 245px;
             border: solid 1px;
             border-radius: 5px;
             border-color: black;
@@ -110,7 +110,7 @@
                     @if ((HttpContext.User != null) && (HttpContext.User.Identity.IsAuthenticated))
                     {
                         <a class="nav-link white" asp-page="/Rules/Location/Index"><input class="btnhome" value="Rules based off Location" /></a>
-                        <a class="nav-link white" asp-page="/Rules/Description/Index"><input class="btnhome" value="Rules based off Store" /></a>
+                        <a class="nav-link white" asp-page="/Rules/Description/Index"><input class="btnhome" value="Rules based off Description" /></a>
                         <a class="nav-link white" asp-page="/Rules/Time/Index"><input class="btnhome" value="Rules based off Time" /></a>
                         <a class="nav-link white" asp-page="/Rules/Amount/Index"><input class="btnhome" value="Rules based off Amount" /></a>
                         <a class="nav-link white" asp-page="/Rules/Misc/Index"><input class="btnhome" value="Miscellaneous Rules" /></a>

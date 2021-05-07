@@ -233,3 +233,4 @@ C:\Users\Armquist\source\repos\Notifier\Notifier\obj\Debug\Notifier.dll
 C:\Users\Armquist\source\repos\Notifier\Notifier\obj\Debug\ref\Notifier.dll
 C:\Users\Armquist\source\repos\Notifier\Notifier\obj\Debug\Notifier.pdb
 C:\Users\Armquist\source\repos\Notifier\Notifier\obj\Debug\Notifier.genruntimeconfig.cache
+C:\Users\Armquist\source\repos\Notifier\Notifier\obj\Debug\Razor\Pages\Shared\EmptyLayout.cshtml.g.cs
