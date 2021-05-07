@@ -36,6 +36,8 @@ namespace Notifier.Pages.Notifications
                                       where n.CreationDate > lastYear && n.OwnerID == currentUserId
                                       select n;
 
+            UnreadNotifications = UnreadNotifications.OrderByDescending(s => s.CreationDate);
+
             Notification = await UnreadNotifications.ToListAsync();
         }
 

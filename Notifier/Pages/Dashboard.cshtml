@@ -142,9 +142,7 @@
                             <thead>
                                 <tr>
                                     <th>
-                                        <a class="date" asp-page="/Dashboard" asp-route-sortOrder="@Model.DateSort">
-                                            @Html.DisplayNameFor(model => model.Transaction[0].TransactionDate)
-                                        </a>
+                                        @Html.DisplayNameFor(model => model.Transaction[0].TransactionDate)
                                     </th>
                                     <th>
                                         @Html.DisplayNameFor(model => model.Transaction[0].Location)

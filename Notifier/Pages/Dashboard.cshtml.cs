@@ -42,10 +42,9 @@ namespace Notifier.Pages
         public IList<TempRuleCount> RuleCount { get; set; }
         public string DateSort { get; set; }
         public int UnreadNotifications { get; set; }
-        public async Task OnGetAsync(string sortOrder, int? pageIndex)
+        public int pageSize { get; set; }
+        public async Task OnGetAsync(int? pageIndex)
         {
-
-            DateSort = sortOrder == "Date" ? "date_desc" : "Date";
 
             var UserID = UserManager.GetUserId(User);
 
@@ -62,22 +61,13 @@ namespace Notifier.Pages
                                where c.OwnerID == UserID
                                select c;
 
-            switch (sortOrder)
-            {
-                case "Date":
-                    Transactions = Transactions.OrderBy(s => s.TransactionDate);
-                    break;
-                case "date_desc":
-                    Transactions = Transactions.OrderByDescending(s => s.TransactionDate);
-                    break;
-                default:
-                    Transactions = Transactions.OrderByDescending(s => s.TransactionDate);
-                    break;
-            }
+
+            Transactions = Transactions.OrderByDescending(s => s.TransactionDate);
 
             var RuleCountSetup = from r in Context.TempRuleCount
                                  select r;
 
+            var TransAmt = Transactions.ToList().Count;
             RuleCount = RuleCountSetup.ToList();
 
             IList<string> Types = new List<string>();
@@ -91,11 +81,25 @@ namespace Notifier.Pages
             CompileList(Types);
             GetUnread();
 
-            var pageSize = Configuration.GetValue("PageSize", RuleCount.Count);
+            if (RuleCount.Count > 3)
+            {
+                pageSize = Configuration.GetValue("PageSize", RuleCount.Count);
+            }
+            else
+            {
+                if (TransAmt == 3)
+                {
+                    pageSize = 3;
+                }
+                else
+                {
+                    pageSize = TransAmt;
+                }
+            }
+
             Transaction = await PaginatedList<Transaction>.CreateAsync(
                 Transactions, pageIndex ?? 1, pageSize);
         }
-
 
         public void GetUnread()
         {

@@ -15,6 +15,7 @@
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="BalanceModel.BalanceID" />
+            <input type="hidden" asp-for="BalanceModel.OwnerID" />
             <div class="form-group">
                 <label asp-for="BalanceModel.BalanceAmount" class="control-label"></label>
                 <input asp-for="BalanceModel.BalanceAmount" class="form-control" />

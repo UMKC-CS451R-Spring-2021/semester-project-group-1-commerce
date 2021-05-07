@@ -31,7 +31,7 @@ namespace Notifier.Pages.Notifications
             var UnreadNotifications = from n in Context.Notification
                                       where n.IsRead == false && n.OwnerID == currentUserId
                                       select n;
-
+            UnreadNotifications = UnreadNotifications.OrderByDescending(s => s.CreationDate);
             Notification = await UnreadNotifications.ToListAsync();
         }
         public async Task<IActionResult> OnPostReadAsync(int id)

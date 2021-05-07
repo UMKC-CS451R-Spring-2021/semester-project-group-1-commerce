@@ -30,8 +30,7 @@ namespace Notifier.PagesTransactions
 
         [BindProperty]
         public Transaction Transaction { get; set; }
-
-
+        public MiscRule ruleCheckMisc { get; set; }
 
         #region snippet_Create
         public async Task<IActionResult> OnPostAsync()
@@ -78,7 +77,15 @@ namespace Notifier.PagesTransactions
             var AmountDup = AmountRules.ToList();
             var TimeDup = TimeRules.ToList();
 
-            var ruleCheckMisc = RuleDup[0];
+            if (RuleDup.Count > 0)
+            {
+                ruleCheckMisc = RuleDup[0];
+            }
+            else 
+            {
+                ruleCheckMisc = new MiscRule { wantAllDeposit = false, wantAllWithdraw = false, wantOverdraft = false };
+            }
+
             var BalanceToPutIn = UserDup[0].BalanceAmount;
             var BalanceIndex = UserDup[0].BalanceID;
             
@@ -109,11 +116,11 @@ namespace Notifier.PagesTransactions
                         marker.Balance = BalanceToPutIn - 35;
                     }
                     marker.Description = marker.Description + " (OVERDRAWN)";
-                    if (ruleCheckMisc.wantOverdraft == true)
-                    {
-                    var newNotification = new Notification { OwnerID = UserID, IsRead = false, transactionID = marker.TransactionId, Reason = "Account Overdrawn", CreationDate = currentTime, Type = "Overdraw" };
-                    Context.Notification.Add(newNotification);
-                    }
+                        if (ruleCheckMisc.wantOverdraft == true)
+                        {
+                            var newNotification = new Notification { OwnerID = UserID, IsRead = false, transactionID = marker.TransactionId, Reason = "Account Overdrawn", CreationDate = currentTime, Type = "Overdraw" };
+                            Context.Notification.Add(newNotification);
+                        }
                 }
                 else
                 {
@@ -204,22 +211,26 @@ namespace Notifier.PagesTransactions
             {
                 TimeSpan OlderTime = TimeSpan.Zero;
                 TimeSpan NewerTime = TimeSpan.Zero;
-
+                var TimeCompare = marker.TransactionDate.TimeOfDay;
                 if (TimeDup[i].TransactionTimeFilterFrom >= TimeDup[i].TransactionTimeFilterUntil)
                 {
                     OlderTime = TimeDup[i].TransactionTimeFilterUntil.TimeOfDay;
                     NewerTime = TimeDup[i].TransactionTimeFilterFrom.TimeOfDay;
+                    if (TimeCompare < OlderTime || TimeCompare > NewerTime)
+                    {
+                        var newNotification = new Notification { OwnerID = marker.OwnerID, IsRead = false, transactionID = marker.TransactionId, Reason = ("Transaction detected between: " + TimeDup[i].TransactionTimeFilterFrom.ToString("h:mm tt") + " and " + TimeDup[i].TransactionTimeFilterUntil.ToString("h:mm tt")), CreationDate = currentTime, Type = "Time" };
+                        Context.Notification.Add(newNotification);
+                    }
                 }
                 else
                 {
                     OlderTime = TimeDup[i].TransactionTimeFilterFrom.TimeOfDay;
                     NewerTime = TimeDup[i].TransactionTimeFilterUntil.TimeOfDay;
-                }
-                var TimeCompare = marker.TransactionDate.TimeOfDay;
-                if (TimeCompare >= OlderTime && TimeCompare <= NewerTime)
-                {
-                    var newNotification = new Notification { OwnerID = marker.OwnerID, IsRead = false, transactionID = marker.TransactionId, Reason = ("Transaction detected between: " + TimeDup[i].TransactionTimeFilterFrom.ToString("h:mm tt") + " and " + TimeDup[i].TransactionTimeFilterUntil.ToString("h:mm tt")), CreationDate = currentTime, Type = "Time" };
-                    Context.Notification.Add(newNotification);
+                    if (TimeCompare >= OlderTime && TimeCompare <= NewerTime)
+                    {
+                        var newNotification = new Notification { OwnerID = marker.OwnerID, IsRead = false, transactionID = marker.TransactionId, Reason = ("Transaction detected between: " + TimeDup[i].TransactionTimeFilterFrom.ToString("h:mm tt") + " and " + TimeDup[i].TransactionTimeFilterUntil.ToString("h:mm tt")), CreationDate = currentTime, Type = "Time" };
+                        Context.Notification.Add(newNotification);
+                    }
                 }
             }
             Context.SaveChanges();
